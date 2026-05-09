@@ -10,39 +10,40 @@
 <meta property="og:title" content="Цветята на Острица — Wildflowers of Ostritsa Reserve" />
 <meta property="og:description" content="Eleven wildflower species blooming today (9 May 2026) at Bulgaria's oldest dedicated nature reserve, on Golo Bardo near Pernik." />
 <meta property="og:type" content="article" />
+
+<!-- PhotoSwipe v5 stylesheet -->
+<link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.css" />
+
 <style>
 /* ------------------------------------------------------------------
    Цветята на Острица — single-file mobile-first stylesheet
-   Warm, natural palette: aged-cream paper, forest green, terracotta
+   Warm palette: aged-cream paper, forest-green primary, terracotta accent
    ------------------------------------------------------------------ */
 
 :root {
-  /* palette */
-  --paper:        #f7f1e3;   /* warm cream background */
-  --paper-deep:   #ede4c8;   /* slightly darker cream for header/footer */
-  --card:         #fffdf6;   /* card surface */
-  --ink:          #2b2117;   /* primary text */
-  --ink-soft:     #5a4d3e;   /* secondary text */
-  --ink-mute:     #8a7a64;   /* tertiary text */
-  --rule:         #e0d4b3;   /* dividers and outlines */
+  --paper:        #f1ead6;   /* page background — slightly deeper cream so cards pop */
+  --paper-deep:   #e6dcb9;
+  --card:         #fffdf6;
+  --ink:          #2b2117;
+  --ink-soft:     #5a4d3e;
+  --ink-mute:     #8a7a64;
+  --rule:         #ddd0a8;
 
-  --forest:       #2d4a2c;   /* primary accent (header band) */
+  --forest:       #2d4a2c;
   --forest-deep:  #1a2f1a;
   --moss:         #6b8b3d;
-  --terracotta:   #c75d3a;   /* warm accent */
-  --sun:          #e6a93b;   /* highlight */
+  --terracotta:   #c75d3a;
+  --sun:          #e6a93b;
 
-  /* rarity badge colors */
-  --badge-bg:     #b3322f;   /* Bulgarian endemic — strong red */
+  --badge-bg:     #b3322f;
   --badge-bg-fg:  #fff8ef;
-  --badge-bk:     #2a6f6a;   /* Balkan endemic — teal */
+  --badge-bk:     #2a6f6a;
   --badge-bk-fg:  #f0f8f6;
-  --badge-rb:     #8a1f1c;   /* Red Book — deep crimson */
+  --badge-rb:     #8a1f1c;
   --badge-rb-fg:  #ffe9d8;
-  --badge-ws:     #5d7a3d;   /* widespread but special — sage */
+  --badge-ws:     #5d7a3d;
   --badge-ws-fg:  #f3f8e6;
 
-  /* bloom-status colors */
   --status-peak-bg:   #406b3e;
   --status-peak-fg:   #f3fce8;
   --status-early-bg:  #b07820;
@@ -50,17 +51,20 @@
   --status-open-bg:   #8a4ea8;
   --status-open-fg:   #f7eafc;
 
-  /* layout */
   --maxw: 1180px;
-  --gap:  1rem;
   --radius: 14px;
 
-  /* shadows */
-  --shadow-sm: 0 1px 2px rgba(43, 33, 23, 0.06), 0 2px 6px rgba(43, 33, 23, 0.04);
-  --shadow-md: 0 2px 6px rgba(43, 33, 23, 0.08), 0 8px 22px rgba(43, 33, 23, 0.10);
+  /* stronger card shadow for clear separation */
+  --shadow-card:
+    0 1px 2px rgba(43, 33, 23, 0.05),
+    0 4px 12px rgba(43, 33, 23, 0.08),
+    0 16px 28px rgba(43, 33, 23, 0.05);
+  --shadow-card-hover:
+    0 2px 4px rgba(43, 33, 23, 0.07),
+    0 8px 18px rgba(43, 33, 23, 0.10),
+    0 22px 36px rgba(43, 33, 23, 0.07);
 }
 
-/* ----- reset-ish ----- */
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
@@ -79,14 +83,22 @@ body {
   color: var(--ink);
   background: var(--paper);
   background-image:
-    radial-gradient(900px 500px at 0% -10%, rgba(231, 207, 154, 0.50), transparent 60%),
+    radial-gradient(900px 500px at 0% -10%, rgba(231, 207, 154, 0.55), transparent 60%),
     radial-gradient(800px 500px at 110% 5%, rgba(199, 93, 58, 0.10), transparent 60%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* belt-and-suspenders against any stray horizontal overflow */
+  overflow-x: hidden;
 }
 
-img { max-width: 100%; display: block; }
+/* Every image is responsive by default — single source of truth */
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 a {
   color: var(--terracotta);
@@ -100,7 +112,6 @@ a:hover { color: #a64528; }
 
 p { margin: 0 0 .75em; }
 
-/* ----- layout ----- */
 .container {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -158,7 +169,8 @@ p { margin: 0 0 .75em; }
   border-radius: var(--radius);
   padding: 1.1rem 1.15rem;
   margin: 1.5rem 0 1.75rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card);
+  min-width: 0;
 }
 .intro h2 {
   font-size: 1.15rem;
@@ -171,7 +183,9 @@ p { margin: 0 0 .75em; }
   display: flex;
   flex-wrap: wrap;
   gap: .35rem .55rem;
-  margin-top: .65rem;
+  margin: .85rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 .intro .stat-chip {
   display: inline-flex;
@@ -187,11 +201,12 @@ p { margin: 0 0 .75em; }
 
 /* ----- legend ----- */
 .legend {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
   padding: .85rem 1rem;
   background: var(--paper-deep);
   border: 1px solid var(--rule);
   border-radius: 12px;
+  min-width: 0;
 }
 .legend h3 {
   font-size: .75rem;
@@ -206,22 +221,28 @@ p { margin: 0 0 .75em; }
   flex-wrap: wrap;
   gap: .35rem .45rem;
 }
-.legend .badge { font-size: .75rem; }
+.legend .badge,
+.legend .status { font-size: .75rem; }
 
-/* ----- species grid ----- */
+/* ----- species grid: card → gap → card rhythm ----- */
 .species-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.1rem;
+  gap: 1.6rem;            /* >=24px between cards on mobile */
+  min-width: 0;
 }
 
 @media (min-width: 768px) {
-  .species-grid { grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+  .species-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
 
 @media (min-width: 1100px) {
-  .species-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .species-grid { grid-template-columns: 1fr 1fr 1fr; gap: 2.25rem; }
 }
+
+/* grid items must be allowed to shrink — prevents overflow on narrow viewports */
+.species-grid > *,
+.photos > * { min-width: 0; }
 
 /* ----- card ----- */
 .species-card {
@@ -229,22 +250,30 @@ p { margin: 0 0 .75em; }
   border: 1px solid var(--rule);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  transition: box-shadow .2s ease, transform .2s ease;
 }
+
 .species-card.bonus {
-  border-style: dashed;
-  border-color: var(--moss);
+  border: 1px dashed var(--moss);
   background:
     linear-gradient(0deg, var(--card), var(--card)),
     linear-gradient(180deg, rgba(107, 139, 61, 0.08), transparent);
 }
 
-.photos { display: grid; gap: 1px; background: var(--rule); }
+/* ----- photos ----- */
+.photos {
+  display: grid;
+  gap: 2px;
+  background: var(--rule);
+  min-width: 0;
+}
 .photos.one  { grid-template-columns: 1fr; }
 .photos.two  { grid-template-columns: 1fr 1fr; }
-@media (max-width: 480px) {
+@media (max-width: 540px) {
   .photos.two { grid-template-columns: 1fr; }
 }
 
@@ -252,20 +281,71 @@ p { margin: 0 0 .75em; }
   position: relative;
   background: var(--paper-deep);
   display: block;
+  min-width: 0;
+  overflow: hidden;
 }
-.photo img {
+
+/* tap-to-zoom anchor wraps the img */
+.photo-zoom {
+  display: block;
+  text-decoration: none;
+  border: 0;
+  background: var(--paper-deep);
+  cursor: zoom-in;
+  position: relative;
+  outline: none;
+}
+.photo-zoom:focus-visible { outline: 3px solid var(--sun); outline-offset: -3px; }
+.photo-zoom img {
   width: 100%;
+  max-width: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
+  transition: transform .25s ease;
+  background: var(--paper-deep);
 }
+@media (hover: hover) {
+  .photo-zoom:hover img { transform: scale(1.025); }
+}
+
+/* zoom hint: small badge top-right of every photo */
+.photo-zoom::after {
+  content: "⤢";
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(43, 33, 23, 0.55);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.photo-zoom:hover::after,
+.photo-zoom:focus-visible::after { opacity: 1; }
+@media (pointer: coarse) {
+  /* on touch devices, always show the hint */
+  .photo-zoom::after { opacity: .85; }
+}
+
 .photo .credit {
   font-size: .68rem;
-  line-height: 1.35;
+  line-height: 1.4;
   color: var(--ink-mute);
-  padding: .35rem .55rem .45rem;
+  padding: .4rem .65rem .5rem;
   background: var(--card);
   border-top: 1px solid var(--rule);
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 .photo .credit a {
   color: var(--ink-soft);
@@ -273,34 +353,31 @@ p { margin: 0 0 .75em; }
   text-decoration-color: rgba(138, 122, 100, 0.45);
 }
 
-/* placeholder photo (when no Commons image is available) */
-.photo-placeholder {
-  aspect-ratio: 4 / 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.25rem;
-  background:
-    repeating-linear-gradient(45deg,
-      rgba(107, 139, 61, 0.10) 0 12px,
-      rgba(107, 139, 61, 0.04) 12px 24px);
-  color: var(--forest-deep);
-}
-.photo-placeholder .icon { font-size: 2rem; margin-bottom: .35rem; opacity: .8; }
-.photo-placeholder p { margin: 0 0 .35em; font-size: .92rem; line-height: 1.4; max-width: 28ch; }
-.photo-placeholder a { font-size: .9rem; }
-
 /* ----- card body ----- */
-.card-body { padding: 1rem 1rem 1.1rem; }
+.card-body {
+  padding: 1.15rem 1.2rem 1.3rem;
+  position: relative;
+}
+
+/* small accent bar between photo block and body */
+.card-body::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--terracotta);
+  opacity: .55;
+  margin: -0.25rem 0 .9rem;
+}
+.species-card.bonus .card-body::before { background: var(--moss); }
 
 .species-card .name-bg {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   line-height: 1.2;
   font-weight: 700;
   color: var(--forest-deep);
-  margin: 0 0 .15rem;
+  margin: 0 0 .2rem;
   letter-spacing: -0.005em;
 }
 .species-card .name-latin {
@@ -312,23 +389,21 @@ p { margin: 0 0 .75em; }
 .species-card .name-en {
   font-size: .92rem;
   color: var(--ink-mute);
-  margin: .1rem 0 0;
+  margin: .15rem 0 0;
 }
 
-/* tag row */
 .tag-row {
   display: flex;
   flex-wrap: wrap;
   gap: .35rem;
-  margin: .75rem 0 .85rem;
+  margin: .85rem 0 .9rem;
 }
 
-/* badges (rarity) */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: .3rem;
-  padding: .25rem .55rem;
+  padding: .27rem .58rem;
   border-radius: 999px;
   font-size: .8rem;
   font-weight: 700;
@@ -341,12 +416,11 @@ p { margin: 0 0 .75em; }
 .badge-redbook    { background: var(--badge-rb); color: var(--badge-rb-fg); }
 .badge-widespread { background: var(--badge-ws); color: var(--badge-ws-fg); }
 
-/* status pill */
 .status {
   display: inline-flex;
   align-items: center;
   gap: .3rem;
-  padding: .25rem .55rem;
+  padding: .27rem .58rem;
   border-radius: 999px;
   font-size: .8rem;
   font-weight: 700;
@@ -357,19 +431,18 @@ p { margin: 0 0 .75em; }
 .status-early { background: var(--status-early-bg); color: var(--status-early-fg); }
 .status-open  { background: var(--status-open-bg);  color: var(--status-open-fg); }
 
-/* description */
 .desc {
   margin-top: .15rem;
   font-size: .98rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--ink);
 }
-.desc p { margin: 0 0 .55em; }
+.desc p { margin: 0 0 .65em; }
 .desc p:last-child { margin-bottom: 0; }
 
 /* ----- divider before bonus ----- */
 .bonus-divider {
-  margin: 2rem 0 1.25rem;
+  margin: 2rem 0 1.5rem;
   text-align: center;
   position: relative;
 }
@@ -377,7 +450,7 @@ p { margin: 0 0 .75em; }
   content: '';
   position: absolute;
   top: 50%; height: 1px;
-  width: calc(50% - 110px);
+  width: calc(50% - 130px);
   background: var(--rule);
 }
 .bonus-divider::before { left: 0; }
@@ -385,7 +458,7 @@ p { margin: 0 0 .75em; }
 .bonus-divider span {
   display: inline-block;
   background: var(--paper);
-  padding: 0 .9rem;
+  padding: 0 1rem;
   font-size: .82rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -414,33 +487,53 @@ p { margin: 0 0 .75em; }
 .site-footer .credits { margin: .35em 0 0; color: #9d8c66; font-size: .8rem; }
 .site-footer a { color: #e8c997; text-decoration-color: rgba(232, 201, 151, 0.5); }
 
+/* ----- PhotoSwipe customisation ----- */
+.pswp { --pswp-bg: #1a2114; }
+.pswp__caption-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: .85rem;
+  text-align: center;
+  color: #ece1bb;
+  padding: .6rem 1rem;
+  background: rgba(0,0,0,0.55);
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1500;
+  pointer-events: none;
+  word-break: break-word;
+}
+
 /* ----- responsive tweaks ----- */
 @media (max-width: 374px) {
   body { font-size: 16px; }
   .container { padding: 1rem .75rem 3rem; }
   .site-header h1 { font-size: 1.45rem; }
-  .species-card .name-bg { font-size: 1.25rem; }
+  .species-card .name-bg { font-size: 1.3rem; }
+  .card-body { padding: 1rem 1rem 1.15rem; }
 }
 
 @media (min-width: 600px) {
   body { font-size: 18px; }
 }
 
-/* ----- accessibility / motion ----- */
 :focus-visible { outline: 2px solid var(--terracotta); outline-offset: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+  .photo-zoom:hover img { transform: none; }
 }
 
-/* ----- print ----- */
 @media print {
-  body { background: #fff; color: #000; }
+  body { background: #fff; color: #000; overflow-x: visible; }
   .site-header, .intro, .legend, .species-card, .site-footer {
     background: #fff; box-shadow: none; border: 1px solid #ccc;
   }
   .photos { page-break-inside: avoid; }
+  .photo-zoom::after { display: none; }
 }
 </style>
 </head>
@@ -458,7 +551,7 @@ p { margin: 0 0 .75em; }
       <span class="date" lang="en">9 May 2026 · Saturday · 11 species in flower</span>
     </p>
     <p class="lede" lang="en">
-      A snapshot of what's in bloom today on Bulgaria's oldest dedicated nature reserve, ~45 minutes west of Sofia. Stay on the marked trails — every plant on this page is photographed, never picked.
+      A snapshot of what's in bloom today on Bulgaria's oldest dedicated nature reserve, ~45 minutes west of Sofia. Tap any photo to view it larger and pinch to zoom. Stay on the marked trails — every plant on this page is photographed, never picked.
     </p>
   </div>
 </header>
@@ -471,7 +564,7 @@ p { margin: 0 0 .75em; }
       Поддържан резерват „Острица“ sits on the limestone slopes of Голо бърдо (Bare Hill), between the towns of Pernik and Radomir. Declared in <strong>1943</strong>, it's the oldest dedicated nature reserve in Bulgaria — older than the country's national-park system itself. The reason it was protected is simple: it holds an extraordinary concentration of rare plants on just <strong>134 hectares</strong>.
     </p>
     <p lang="en">
-      Today the reserve protects <strong>453 plant species</strong>, including <strong>5 Bulgarian endemics</strong>, <strong>32 Balkan endemics</strong>, and <strong>23 species in Bulgaria's Red Book</strong>. The flagship is the Bulgarian-endemic Urumov's tulip, *Tulipa urumoffii*, which grows on only a handful of limestone hills in the country's west — and Острица is one of them.
+      Today the reserve protects <strong>453 plant species</strong>, including <strong>5 Bulgarian endemics</strong>, <strong>32 Balkan endemics</strong>, and <strong>23 species in Bulgaria's Red Book</strong>. The flagship is the Bulgarian-endemic Urumov's tulip, <i lang="la">Tulipa urumoffii</i>, which grows on only a handful of limestone hills in the country's west — and Острица is one of them.
     </p>
     <p lang="en">
       Mid-May is peak season. The eleven species below are what hikers, tour operators and botanists are seeing in flower this weekend.
@@ -502,16 +595,22 @@ p { margin: 0 0 .75em; }
     </div>
   </section>
 
-  <section class="species-grid" aria-label="Species blooming today">
+  <section class="species-grid" id="gallery" aria-label="Species blooming today">
 
     <!-- 1 ============================================================ -->
     <article class="species-card" id="tulipa-urumoffii">
       <div class="photos one">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Tulipa_urumoffii-%D0%A3%D1%80%D1%83%D0%BC%D0%BE%D0%B2%D0%BE_%D0%BB%D0%B0%D0%BB%D0%B5-Chepan.jpg"
-               alt="Yellow Urumov's tulip with red streaks blooming on a Bulgarian limestone slope"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/0/0b/Tulipa_urumoffii-%D0%A3%D1%80%D1%83%D0%BC%D0%BE%D0%B2%D0%BE_%D0%BB%D0%B0%D0%BB%D0%B5-Chepan.jpg"
+             data-pswp-width="2560" data-pswp-height="1920"
+             data-pswp-caption="Урумово лале (Tulipa urumoffii) · photo by Neli St Ivanova · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Tulipa_urumoffii-%D0%A3%D1%80%D1%83%D0%BC%D0%BE%D0%B2%D0%BE_%D0%BB%D0%B0%D0%BB%D0%B5-Chepan.jpg"
+                 alt="Yellow Urumov's tulip with red streaks blooming on a Bulgarian limestone slope"
+                 width="2560" height="1920" />
+          </a>
           <p class="credit" lang="en">
             Photo by Neli St Ivanova (Сдружение за дива природа БАЛКАНИ), CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Tulipa_urumoffii-%D0%A3%D1%80%D1%83%D0%BC%D0%BE%D0%B2%D0%BE_%D0%BB%D0%B0%D0%BB%D0%B5-Chepan.jpg">Wikimedia Commons</a>.
@@ -542,20 +641,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="iris-reichenbachii">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Iris_reichenbachii_Vitosha.jpg"
-               alt="Reichenbach's iris in flower in a meadow"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/f/ff/Iris_reichenbachii_Vitosha.jpg"
+             data-pswp-width="1260" data-pswp-height="1860"
+             data-pswp-caption="Райхенбахова перуника (Iris reichenbachii) · photo by ABesheva · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Iris_reichenbachii_Vitosha.jpg"
+                 alt="Reichenbach's iris in flower in a meadow"
+                 width="1260" height="1860" />
+          </a>
           <p class="credit" lang="en">
             Photo by ABesheva, CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Iris_reichenbachii_Vitosha.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Iris_reichenbachii_-_bosanska_perunika.jpg"
-               alt="Close-up of a Reichenbach's iris flower showing yellow and dusky-purple colour forms"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/a/a9/Iris_reichenbachii_-_bosanska_perunika.jpg"
+             data-pswp-width="2592" data-pswp-height="1936"
+             data-pswp-caption="Iris reichenbachii (Bosnia) · photo by Ivan Medenica · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Iris_reichenbachii_-_bosanska_perunika.jpg"
+                 alt="Close-up of a Reichenbach's iris flower showing yellow and dusky-purple colour forms"
+                 width="2592" height="1936" />
+          </a>
           <p class="credit" lang="en">
             Photo by Ivan Medenica, CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Iris_reichenbachii_-_bosanska_perunika.jpg">Wikimedia&nbsp;Commons</a>.
@@ -585,20 +696,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="iris-pumila">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_pumila-Chepan.jpg"
-               alt="Tiny dwarf iris in pale yellow blooming low to the ground on Chepan mountain"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_pumila-Chepan.jpg"
+             data-pswp-width="2560" data-pswp-height="1920"
+             data-pswp-caption="Дребна перуника (Iris pumila) on Чепън · photo by Neli St Ivanova · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/d/db/Iris_pumila-Chepan.jpg"
+                 alt="Tiny dwarf iris in pale yellow blooming low to the ground on Chepan mountain"
+                 width="2560" height="1920" />
+          </a>
           <p class="credit" lang="en">
             Photo by Neli St Ivanova (Сдружение за дива природа БАЛКАНИ), CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Iris_pumila-Chepan.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/6/69/Iris_pumila_Pouzdranska_step_CZ_1.jpg"
-               alt="Purple dwarf iris flowering in dry steppe meadow"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/6/69/Iris_pumila_Pouzdranska_step_CZ_1.jpg"
+             data-pswp-width="1800" data-pswp-height="1200"
+             data-pswp-caption="Iris pumila on the Pouzdřany steppe · photo by Jan Eckstein · CC BY-SA 3.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/6/69/Iris_pumila_Pouzdranska_step_CZ_1.jpg"
+                 alt="Purple dwarf iris flowering in dry steppe meadow"
+                 width="1800" height="1200" />
+          </a>
           <p class="credit" lang="en">
             Photo by Jan Eckstein, CC&nbsp;BY-SA 3.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Iris_pumila_Pouzdranska_step_CZ_1.jpg">Wikimedia&nbsp;Commons</a>.
@@ -628,20 +751,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="adonis-vernalis">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/3/39/20230430_Adonis_vernalis.jpg"
-               alt="Bright glossy yellow spring Adonis flowers in dense clusters in a heath meadow"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/3/39/20230430_Adonis_vernalis.jpg"
+             data-pswp-width="4326" data-pswp-height="2888"
+             data-pswp-caption="Пролетен горицвет (Adonis vernalis) · photo by Livia Rasp · CC BY 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/3/39/20230430_Adonis_vernalis.jpg"
+                 alt="Bright glossy yellow spring Adonis flowers in dense clusters in a heath meadow"
+                 width="4326" height="2888" />
+          </a>
           <p class="credit" lang="en">
             Photo by Livia Rasp (FlocciNivis), CC&nbsp;BY 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:20230430_Adonis_vernalis.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/0/03/Adonis_vernalis_sl1.jpg"
-               alt="Habit of spring Adonis showing finely divided leaves and large yellow flowers"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/0/03/Adonis_vernalis_sl1.jpg"
+             data-pswp-width="4128" data-pswp-height="3096"
+             data-pswp-caption="Adonis vernalis habit · photo by Stefan Lefnaer · CC BY-SA 3.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/0/03/Adonis_vernalis_sl1.jpg"
+                 alt="Habit of spring Adonis showing finely divided leaves and large yellow flowers"
+                 width="4128" height="3096" />
+          </a>
           <p class="credit" lang="en">
             Photo by Stefan Lefnaer, CC&nbsp;BY-SA 3.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Adonis_vernalis_sl1.jpg">Wikimedia&nbsp;Commons</a>.
@@ -671,20 +806,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="amygdalus-nana">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Prunus_tenella_bloom_A.jpg"
-               alt="Pink-flowered dwarf wild almond shrub blooming on a dry south-facing slope"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/f/f6/Prunus_tenella_bloom_A.jpg"
+             data-pswp-width="2288" data-pswp-height="1712"
+             data-pswp-caption="Бадемче (Amygdalus nana / Prunus tenella) · photo by Le Loup Gris · CC BY-SA 3.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/f/f6/Prunus_tenella_bloom_A.jpg"
+                 alt="Pink-flowered dwarf wild almond shrub blooming on a dry south-facing slope"
+                 width="2288" height="1712" />
+          </a>
           <p class="credit" lang="en">
             Photo by Le Loup Gris, CC&nbsp;BY-SA 3.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Prunus_tenella_bloom_A.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Prunus_tenella_2019-04-13_9683.jpg"
-               alt="Close-up of dwarf almond pink-white blossoms"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/4/4b/Prunus_tenella_2019-04-13_9683.jpg"
+             data-pswp-width="3851" data-pswp-height="2888"
+             data-pswp-caption="Prunus tenella close-up · photo by Salicyna · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Prunus_tenella_2019-04-13_9683.jpg"
+                 alt="Close-up of dwarf almond pink-white blossoms"
+                 width="3851" height="2888" />
+          </a>
           <p class="credit" lang="en">
             Photo by Salicyna, CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Prunus_tenella_2019-04-13_9683.jpg">Wikimedia&nbsp;Commons</a>.
@@ -714,20 +861,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="syringa-vulgaris">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Syringa_vulgaris_Bulgaria_6.jpg"
-               alt="Wild common lilac in flower in its native Bulgarian limestone habitat"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/0/0d/Syringa_vulgaris_Bulgaria_6.jpg"
+             data-pswp-width="3072" data-pswp-height="2304"
+             data-pswp-caption="Wild lilac (Syringa vulgaris) in Bulgaria · photo by Nedelin · CC BY 2.5"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Syringa_vulgaris_Bulgaria_6.jpg"
+                 alt="Wild common lilac in flower in its native Bulgarian limestone habitat"
+                 width="3072" height="2304" />
+          </a>
           <p class="credit" lang="en">
             Photo by Nedelin, CC&nbsp;BY 2.5,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Syringa_vulgaris_Bulgaria_6.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Korina_2017-05-07_Syringa_vulgaris_3.jpg"
-               alt="Close cluster of fragrant purple lilac blossoms"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/a/a6/Korina_2017-05-07_Syringa_vulgaris_3.jpg"
+             data-pswp-width="3264" data-pswp-height="4896"
+             data-pswp-caption="Lilac blossoms close-up · photo by Katrin Schneider · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Korina_2017-05-07_Syringa_vulgaris_3.jpg"
+                 alt="Close cluster of fragrant purple lilac blossoms"
+                 width="3264" height="4896" />
+          </a>
           <p class="credit" lang="en">
             Photo by Katrin Schneider (korina.info), CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Korina_2017-05-07_Syringa_vulgaris_3.jpg">Wikimedia&nbsp;Commons</a>.
@@ -757,20 +916,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="dactylorhiza-sambucina">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Prstnatec_-_%C5%BElut%C3%BD.jpeg"
-               alt="Yellow form of the elder-flowered ground orchid in a meadow"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/0/0e/Prstnatec_-_%C5%BElut%C3%BD.jpeg"
+             data-pswp-width="4608" data-pswp-height="3456"
+             data-pswp-caption="Yellow form of the elder-flowered orchid · photo by Mirek Akr · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Prstnatec_-_%C5%BElut%C3%BD.jpeg"
+                 alt="Yellow form of the elder-flowered ground orchid in a meadow"
+                 width="4608" height="3456" />
+          </a>
           <p class="credit" lang="en">
             Photo by Mirek Akr, CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Prstnatec_-_%C5%BElut%C3%BD.jpeg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Dactylorhiza_sambucina_43.jpg"
-               alt="Purple-violet form of the elder-flowered ground orchid"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/0/0f/Dactylorhiza_sambucina_43.jpg"
+             data-pswp-width="1079" data-pswp-height="1920"
+             data-pswp-caption="Purple form of the elder-flowered orchid · photo by Joachim Lutz · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Dactylorhiza_sambucina_43.jpg"
+                 alt="Purple-violet form of the elder-flowered ground orchid"
+                 width="1079" height="1920" />
+          </a>
           <p class="credit" lang="en">
             Photo by Joachim Lutz, CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Dactylorhiza_sambucina_43.jpg">Wikimedia&nbsp;Commons</a>.
@@ -800,20 +971,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="neotinea-tridentata">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Neotinea_tridentata_inflorescence.jpg"
-               alt="Pink-purple pyramidal inflorescence of the three-toothed orchid"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/a/a5/Neotinea_tridentata_inflorescence.jpg"
+             data-pswp-width="2688" data-pswp-height="2172"
+             data-pswp-caption="Three-toothed orchid (Neotinea tridentata) · photo by Hüseyin Cahid Doğan · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Neotinea_tridentata_inflorescence.jpg"
+                 alt="Pink-purple pyramidal inflorescence of the three-toothed orchid"
+                 width="2688" height="2172" />
+          </a>
           <p class="credit" lang="en">
             Photo by Hüseyin Cahid Doğan, CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Neotinea_tridentata_inflorescence.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Orchis_tridentata-Blueten.jpg"
-               alt="Macro view of three-toothed orchid flowers showing the three-lobed lip"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/e/ec/Orchis_tridentata-Blueten.jpg"
+             data-pswp-width="1992" data-pswp-height="3033"
+             data-pswp-caption="Three-toothed orchid macro · photo by Tuxyso · CC BY-SA 3.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Orchis_tridentata-Blueten.jpg"
+                 alt="Macro view of three-toothed orchid flowers showing the three-lobed lip"
+                 width="1992" height="3033" />
+          </a>
           <p class="credit" lang="en">
             Photo by Tuxyso, CC&nbsp;BY-SA 3.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Orchis_tridentata-Blueten.jpg">Wikimedia&nbsp;Commons</a>.
@@ -843,20 +1026,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card" id="anacamptis-morio">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Orchis_morio_FlowersCloseup_2009April26_SierraMadrona.jpg"
-               alt="Close-up of green-winged orchid flowers showing purple petals with green veins on the side wings"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/1/1c/Orchis_morio_FlowersCloseup_2009April26_SierraMadrona.jpg"
+             data-pswp-width="2400" data-pswp-height="3200"
+             data-pswp-caption="Green-winged orchid (Anacamptis morio) · photo by Javier Martin · public domain"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Orchis_morio_FlowersCloseup_2009April26_SierraMadrona.jpg"
+                 alt="Close-up of green-winged orchid flowers showing purple petals with green veins on the side wings"
+                 width="2400" height="3200" />
+          </a>
           <p class="credit" lang="en">
             Photo by Javier Martin, public domain,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Orchis_morio_FlowersCloseup_2009April26_SierraMadrona.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/8/84/Anacamptis_morio_flowers.jpg"
-               alt="Detail of Anacamptis morio (green-winged orchid) flower with the characteristic green stripes"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/8/84/Anacamptis_morio_flowers.jpg"
+             data-pswp-width="1858" data-pswp-height="2478"
+             data-pswp-caption="Anacamptis morio detail · photo by Bpj30 · CC BY 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/8/84/Anacamptis_morio_flowers.jpg"
+                 alt="Detail of Anacamptis morio (green-winged orchid) flower with the characteristic green stripes"
+                 width="1858" height="2478" />
+          </a>
           <p class="credit" lang="en">
             Photo by Bpj30, CC&nbsp;BY 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Anacamptis_morio_flowers.jpg">Wikimedia&nbsp;Commons</a>.
@@ -893,20 +1088,32 @@ p { margin: 0 0 .75em; }
     <article class="species-card bonus" id="paeonia-mascula">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/6/63/Paeonia_mascula_Croatia.jpg"
-               alt="Pink-rose male peony flower in habitat in Velebit Nature Park, Croatia"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/6/63/Paeonia_mascula_Croatia.jpg"
+             data-pswp-width="4608" data-pswp-height="3456"
+             data-pswp-caption="Самовилски божур (Paeonia mascula) in Velebit, Croatia · photo by Fraxinus · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/6/63/Paeonia_mascula_Croatia.jpg"
+                 alt="Pink-rose male peony flower in habitat in Velebit Nature Park, Croatia"
+                 width="4608" height="3456" />
+          </a>
           <p class="credit" lang="en">
             Photo by Fraxinus, CC&nbsp;BY-SA 4.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Paeonia_mascula_Croatia.jpg">Wikimedia&nbsp;Commons</a>.
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Paeonia_mascula_01.jpg"
-               alt="Open pink-rose male peony bloom"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/7/78/Paeonia_mascula_01.jpg"
+             data-pswp-width="2800" data-pswp-height="2080"
+             data-pswp-caption="Paeonia mascula bloom · photo by Michael Wolf · CC BY-SA 3.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/7/78/Paeonia_mascula_01.jpg"
+                 alt="Open pink-rose male peony bloom"
+                 width="2800" height="2080" />
+          </a>
           <p class="credit" lang="en">
             Photo by Michael Wolf, CC&nbsp;BY-SA 3.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Paeonia_mascula_01.jpg">Wikimedia&nbsp;Commons</a>.
@@ -936,10 +1143,16 @@ p { margin: 0 0 .75em; }
     <article class="species-card bonus" id="edraianthus-serbicus">
       <div class="photos two">
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Edraianthus_serbicus_%D0%93%D0%BE%D0%BB%D0%BE_%D0%B1%D1%8A%D1%80%D0%B4%D0%BE.jpg"
-               alt="Tight cluster of small purple bell-flowers of Serbian bellflower hugging the ground on Golo Bardo, Bulgaria"
-               width="1200" height="900" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/6/6d/Edraianthus_serbicus_%D0%93%D0%BE%D0%BB%D0%BE_%D0%B1%D1%8A%D1%80%D0%B4%D0%BE.jpg"
+             data-pswp-width="1600" data-pswp-height="1200"
+             data-pswp-caption="Сръбско звънче (Edraianthus serbicus) at Голо бърдо · photo by ABesheva · CC BY-SA 4.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Edraianthus_serbicus_%D0%93%D0%BE%D0%BB%D0%BE_%D0%B1%D1%8A%D1%80%D0%B4%D0%BE.jpg"
+                 alt="Tight cluster of small purple bell-flowers of Serbian bellflower hugging the ground on Golo Bardo, Bulgaria"
+                 width="1600" height="1200" />
+          </a>
           <p class="credit" lang="en">
             Photo by ABesheva, CC&nbsp;BY-SA 4.0,
             taken at Голо бърдо, via
@@ -947,10 +1160,16 @@ p { margin: 0 0 .75em; }
           </p>
         </div>
         <div class="photo">
-          <img loading="lazy"
-               src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Edraianthus_serbicus_1.jpg"
-               alt="Cluster of small upturned purple bells of Serbian bellflower"
-               width="876" height="600" />
+          <a class="photo-zoom"
+             href="https://upload.wikimedia.org/wikipedia/commons/c/c4/Edraianthus_serbicus_1.jpg"
+             data-pswp-width="876" data-pswp-height="600"
+             data-pswp-caption="Edraianthus serbicus close-up · photo by Ghislain118 · CC BY-SA 3.0"
+             target="_blank" rel="noopener">
+            <img loading="lazy"
+                 src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Edraianthus_serbicus_1.jpg"
+                 alt="Cluster of small upturned purple bells of Serbian bellflower"
+                 width="876" height="600" />
+          </a>
           <p class="credit" lang="en">
             Photo by Ghislain118, CC&nbsp;BY-SA 3.0,
             via <a rel="noopener" href="https://commons.wikimedia.org/wiki/File:Edraianthus_serbicus_1.jpg">Wikimedia&nbsp;Commons</a>.
@@ -986,10 +1205,57 @@ p { margin: 0 0 .75em; }
       🌿 Stay on marked trails. Photograph only — picking plants is forbidden by law inside the reserve.
     </p>
     <p class="credits" lang="en">
-      Built 9 May 2026 · Photos via <a rel="noopener" href="https://commons.wikimedia.org/wiki/Category:Plants_of_Bulgaria">Wikimedia Commons</a> contributors (CC BY / CC BY-SA / public domain). Botanical notes from <a rel="noopener" href="https://bgflora.net/">bgflora.net</a>, the <a rel="noopener" href="http://e-ecodb.bas.bg/rdb/bg/">Bulgarian Red Data Book</a>, and field reports compiled by tour operators visiting the reserve in May 2026.
+      Built 9 May 2026 · Photos via <a rel="noopener" href="https://commons.wikimedia.org/wiki/Category:Plants_of_Bulgaria">Wikimedia Commons</a> contributors (CC BY / CC BY-SA / public domain). Lightbox: <a rel="noopener" href="https://photoswipe.com">PhotoSwipe v5</a>. Botanical notes from <a rel="noopener" href="https://bgflora.net/">bgflora.net</a>, the <a rel="noopener" href="http://e-ecodb.bas.bg/rdb/bg/">Bulgarian Red Data Book</a>, and field reports compiled by tour operators visiting the reserve in May 2026.
     </p>
   </div>
 </footer>
+
+<!-- ===================================================================
+     PhotoSwipe v5 lightbox initialization
+     - Each .species-grid is a gallery container; tap any photo to open
+     - Built-in pinch-zoom + pan + arrow keys + Esc + tap-to-close
+     - Reads data-pswp-width / data-pswp-height / data-pswp-caption
+     - Caption is set via textContent only (XSS-safe)
+     =================================================================== -->
+<script type="module">
+  import PhotoSwipeLightbox from "https://unpkg.com/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js";
+
+  const lightbox = new PhotoSwipeLightbox({
+    gallery: ".species-grid",
+    children: "a.photo-zoom",
+    pswpModule: () => import("https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.esm.js"),
+    initialZoomLevel: "fit",
+    secondaryZoomLevel: 1.5,
+    maxZoomLevel: 4,
+    bgOpacity: 0.92,
+    showHideAnimationType: "zoom",
+    padding: { top: 24, bottom: 56, left: 8, right: 8 }
+  });
+
+  // Caption: pulled from data-pswp-caption, rendered as plain text (no HTML).
+  lightbox.on("uiRegister", () => {
+    lightbox.pswp.ui.registerElement({
+      name: "caption",
+      order: 9,
+      isButton: false,
+      appendTo: "root",
+      onInit: (el) => {
+        el.className = "pswp__caption-text";
+        lightbox.pswp.on("change", () => {
+          const slide = lightbox.pswp.currSlide;
+          const cap =
+            slide && slide.data && slide.data.element
+              ? slide.data.element.getAttribute("data-pswp-caption") || ""
+              : "";
+          // textContent is XSS-safe — captions are plain text only
+          el.textContent = cap;
+        });
+      },
+    });
+  });
+
+  lightbox.init();
+</script>
 
 </body>
 </html>
