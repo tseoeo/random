@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#ffffff"/>
+  <!-- Dolmen silhouette: two uprights + capstone -->
+  <rect x="12" y="22" width="9" height="32" fill="#1f2937"/>
+  <rect x="43" y="22" width="9" height="32" fill="#1f2937"/>
+  <polygon points="6,22 58,22 54,12 10,12" fill="#1f2937"/>
+  <!-- ground line -->
+  <rect x="4" y="54" width="56" height="3" fill="#6b7280"/>
+</svg>
