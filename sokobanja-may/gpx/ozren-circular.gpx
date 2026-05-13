@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="sokobanja-may approximate trace" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Ozren circular</name>
+    <desc>15 km bike loop on the Ozren forested upland — Approximate waypoint trace. Pull source GPX before riding/hiking.</desc>
+  </metadata>
+  <trk>
+    <name>Ozren circular</name>
+    <trkseg>
+      <trkpt lat="43.617800" lon="21.820800"><ele>480.0</ele></trkpt>
+      <trkpt lat="43.623000" lon="21.812000"><ele>540.0</ele></trkpt>
+      <trkpt lat="43.629000" lon="21.806000"><ele>600.0</ele></trkpt>
+      <trkpt lat="43.635000" lon="21.803000"><ele>640.0</ele></trkpt>
+      <trkpt lat="43.641000" lon="21.801000"><ele>670.0</ele></trkpt>
+      <trkpt lat="43.646000" lon="21.800000"><ele>680.0</ele></trkpt>
+      <trkpt lat="43.651000" lon="21.799000"><ele>690.0</ele></trkpt>
+      <trkpt lat="43.657000" lon="21.796000"><ele>685.0</ele></trkpt>
+      <trkpt lat="43.661000" lon="21.792000"><ele>680.0</ele></trkpt>
+      <trkpt lat="43.664000" lon="21.785000"><ele>675.0</ele></trkpt>
+      <trkpt lat="43.666000" lon="21.778000"><ele>670.0</ele></trkpt>
+      <trkpt lat="43.665000" lon="21.771000"><ele>660.0</ele></trkpt>
+      <trkpt lat="43.662000" lon="21.765000"><ele>640.0</ele></trkpt>
+      <trkpt lat="43.658000" lon="21.761000"><ele>620.0</ele></trkpt>
+      <trkpt lat="43.651000" lon="21.766000"><ele>590.0</ele></trkpt>
+      <trkpt lat="43.644000" lon="21.774000"><ele>560.0</ele></trkpt>
+      <trkpt lat="43.636000" lon="21.783000"><ele>530.0</ele></trkpt>
+      <trkpt lat="43.628000" lon="21.793000"><ele>510.0</ele></trkpt>
+      <trkpt lat="43.622000" lon="21.804000"><ele>495.0</ele></trkpt>
+      <trkpt lat="43.617800" lon="21.820800"><ele>480.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

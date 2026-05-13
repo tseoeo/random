@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="sokobanja-may approximate trace" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Vidikovci viewpoint circuit</name>
+    <desc>Hike, 7.8 km loop, Sokobanja basin overlook circuit — Approximate waypoint trace. Pull source GPX before riding/hiking.</desc>
+  </metadata>
+  <trk>
+    <name>Vidikovci viewpoint circuit</name>
+    <trkseg>
+      <trkpt lat="43.646900" lon="21.871800"><ele>400.0</ele></trkpt>
+      <trkpt lat="43.650000" lon="21.878000"><ele>410.0</ele></trkpt>
+      <trkpt lat="43.653000" lon="21.883000"><ele>425.0</ele></trkpt>
+      <trkpt lat="43.656000" lon="21.887000"><ele>440.0</ele></trkpt>
+      <trkpt lat="43.654000" lon="21.892000"><ele>450.0</ele></trkpt>
+      <trkpt lat="43.650000" lon="21.895000"><ele>455.0</ele></trkpt>
+      <trkpt lat="43.645000" lon="21.897000"><ele>450.0</ele></trkpt>
+      <trkpt lat="43.640000" lon="21.899000"><ele>445.0</ele></trkpt>
+      <trkpt lat="43.636000" lon="21.895000"><ele>450.0</ele></trkpt>
+      <trkpt lat="43.634500" lon="21.892000"><ele>440.0</ele></trkpt>
+      <trkpt lat="43.636000" lon="21.887000"><ele>420.0</ele></trkpt>
+      <trkpt lat="43.639000" lon="21.882000"><ele>410.0</ele></trkpt>
+      <trkpt lat="43.642000" lon="21.876000"><ele>405.0</ele></trkpt>
+      <trkpt lat="43.645000" lon="21.874000"><ele>402.0</ele></trkpt>
+      <trkpt lat="43.646900" lon="21.871800"><ele>400.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

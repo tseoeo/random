@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="sokobanja-may approximate trace" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Rtanj Šiljak summit</name>
+    <desc>Hike, 13.4 km round-trip, +950 m, hard. Sub-summit variant turns at 1,400 m. — Approximate waypoint trace. Pull source GPX before riding/hiking.</desc>
+  </metadata>
+  <trk>
+    <name>Rtanj Šiljak summit</name>
+    <trkseg>
+      <trkpt lat="43.790000" lon="21.880000"><ele>610.0</ele></trkpt>
+      <trkpt lat="43.789000" lon="21.883000"><ele>660.0</ele></trkpt>
+      <trkpt lat="43.787000" lon="21.885000"><ele>720.0</ele></trkpt>
+      <trkpt lat="43.785000" lon="21.887000"><ele>800.0</ele></trkpt>
+      <trkpt lat="43.782000" lon="21.889000"><ele>900.0</ele></trkpt>
+      <trkpt lat="43.780000" lon="21.890000"><ele>1000.0</ele></trkpt>
+      <trkpt lat="43.778000" lon="21.891000"><ele>1100.0</ele></trkpt>
+      <trkpt lat="43.776000" lon="21.892000"><ele>1200.0</ele></trkpt>
+      <trkpt lat="43.774500" lon="21.893500"><ele>1300.0</ele></trkpt>
+      <trkpt lat="43.773000" lon="21.894500"><ele>1400.0</ele></trkpt>
+      <trkpt lat="43.772000" lon="21.895500"><ele>1480.0</ele></trkpt>
+      <trkpt lat="43.771000" lon="21.896200"><ele>1530.0</ele></trkpt>
+      <trkpt lat="43.770000" lon="21.896700"><ele>1565.0</ele></trkpt>
+      <trkpt lat="43.771000" lon="21.896200"><ele>1530.0</ele></trkpt>
+      <trkpt lat="43.772000" lon="21.895500"><ele>1480.0</ele></trkpt>
+      <trkpt lat="43.773000" lon="21.894500"><ele>1400.0</ele></trkpt>
+      <trkpt lat="43.774500" lon="21.893500"><ele>1300.0</ele></trkpt>
+      <trkpt lat="43.776000" lon="21.892000"><ele>1200.0</ele></trkpt>
+      <trkpt lat="43.778000" lon="21.891000"><ele>1100.0</ele></trkpt>
+      <trkpt lat="43.780000" lon="21.890000"><ele>1000.0</ele></trkpt>
+      <trkpt lat="43.782000" lon="21.889000"><ele>900.0</ele></trkpt>
+      <trkpt lat="43.785000" lon="21.887000"><ele>800.0</ele></trkpt>
+      <trkpt lat="43.787000" lon="21.885000"><ele>720.0</ele></trkpt>
+      <trkpt lat="43.789000" lon="21.883000"><ele>660.0</ele></trkpt>
+      <trkpt lat="43.790000" lon="21.880000"><ele>610.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

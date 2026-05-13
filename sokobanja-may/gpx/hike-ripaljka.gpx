@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="sokobanja-may approximate trace" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Ripaljka waterfall trail</name>
+    <desc>Hike, ~2-3 km out-and-back to 11-tier cascade on Ozren — Approximate waypoint trace. Pull source GPX before riding/hiking.</desc>
+  </metadata>
+  <trk>
+    <name>Ripaljka waterfall trail</name>
+    <trkseg>
+      <trkpt lat="43.658000" lon="21.848000"><ele>480.0</ele></trkpt>
+      <trkpt lat="43.660500" lon="21.846000"><ele>510.0</ele></trkpt>
+      <trkpt lat="43.663000" lon="21.844000"><ele>540.0</ele></trkpt>
+      <trkpt lat="43.665000" lon="21.842000"><ele>570.0</ele></trkpt>
+      <trkpt lat="43.667000" lon="21.840000"><ele>600.0</ele></trkpt>
+      <trkpt lat="43.668500" lon="21.838500"><ele>625.0</ele></trkpt>
+      <trkpt lat="43.667000" lon="21.840000"><ele>600.0</ele></trkpt>
+      <trkpt lat="43.665000" lon="21.842000"><ele>570.0</ele></trkpt>
+      <trkpt lat="43.663000" lon="21.844000"><ele>540.0</ele></trkpt>
+      <trkpt lat="43.660500" lon="21.846000"><ele>510.0</ele></trkpt>
+      <trkpt lat="43.658000" lon="21.848000"><ele>480.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

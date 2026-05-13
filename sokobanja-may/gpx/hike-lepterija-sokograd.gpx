@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="sokobanja-may approximate trace" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Lepterija → Soko Grad → Golemi Kamen</name>
+    <desc>Hike, 4.9 km, +398 m, Lepterija canyon + Soko Grad ruins — Approximate waypoint trace. Pull source GPX before riding/hiking.</desc>
+  </metadata>
+  <trk>
+    <name>Lepterija → Soko Grad → Golemi Kamen</name>
+    <trkseg>
+      <trkpt lat="43.646900" lon="21.871800"><ele>400.0</ele></trkpt>
+      <trkpt lat="43.643500" lon="21.878000"><ele>395.0</ele></trkpt>
+      <trkpt lat="43.640000" lon="21.883000"><ele>405.0</ele></trkpt>
+      <trkpt lat="43.638000" lon="21.887000"><ele>420.0</ele></trkpt>
+      <trkpt lat="43.636000" lon="21.890000"><ele>450.0</ele></trkpt>
+      <trkpt lat="43.634500" lon="21.893000"><ele>480.0</ele></trkpt>
+      <trkpt lat="43.633000" lon="21.895000"><ele>540.0</ele></trkpt>
+      <trkpt lat="43.632000" lon="21.898000"><ele>620.0</ele></trkpt>
+      <trkpt lat="43.631500" lon="21.901000"><ele>700.0</ele></trkpt>
+      <trkpt lat="43.631000" lon="21.902000"><ele>760.0</ele></trkpt>
+      <trkpt lat="43.630000" lon="21.905000"><ele>790.0</ele></trkpt>
+      <trkpt lat="43.629500" lon="21.908000"><ele>798.0</ele></trkpt>
+      <trkpt lat="43.631000" lon="21.902000"><ele>760.0</ele></trkpt>
+      <trkpt lat="43.632000" lon="21.898000"><ele>620.0</ele></trkpt>
+      <trkpt lat="43.633000" lon="21.895000"><ele>540.0</ele></trkpt>
+      <trkpt lat="43.634500" lon="21.893000"><ele>480.0</ele></trkpt>
+      <trkpt lat="43.638000" lon="21.887000"><ele>420.0</ele></trkpt>
+      <trkpt lat="43.643500" lon="21.878000"><ele>395.0</ele></trkpt>
+      <trkpt lat="43.646900" lon="21.871800"><ele>400.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>

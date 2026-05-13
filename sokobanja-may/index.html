@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#3a4a5e" />
+<meta name="color-scheme" content="light" />
+<title>Sokobanja — 22–25 May 2026</title>
+<meta name="description" content="A three-night trip notebook for Sokobanja, Serbia: cycling, hiking, flora, birds, history, restaurants, logistics. 22–25 May 2026, two people, gravel bikes." />
+
+<link rel="stylesheet" href="style.css" />
+
+<!-- Leaflet from CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script defer src="https://cdn.jsdelivr.net/npm/leaflet-gpx@1.7.0/gpx.min.js"></script>
+<script defer src="script.js"></script>
+</head>
+<body>
+<div class="wrap">
+
+<header class="site-head">
+  <a class="title" href="index.html">Sokobanja</a>
+  <span class="dates">Fri 22 → Mon 25 May 2026 · 2 people · gravel bikes</span>
+</header>
+
+<h1>Three nights at the foot of Rtanj</h1>
+<p class="lede">A trip notebook: basecamp in Sokobanja, day-trips into the surrounding ring of mountains (Rtanj, Ozren, Devica) and one valley over to Lake Bovan. Cycling, hiking, flora in actual late-May bloom, birds, and the boring-but-important logistics.</p>
+
+<div class="stats">
+  <div class="stat"><div class="v">~2h 45m</div><div class="k">drive from Sofia</div></div>
+  <div class="stat"><div class="v">3 nights</div><div class="k">single basecamp</div></div>
+  <div class="stat"><div class="v">400 m</div><div class="k">Sokobanja town</div></div>
+</div>
+
+<nav class="toc" aria-label="On this page">
+  <strong>On this page</strong>
+  <ol>
+    <li><a href="#weather">Expected weather</a></li>
+    <li><a href="#cycling">Cycling routes</a></li>
+    <li><a href="#hiking">Hiking routes</a></li>
+    <li><a href="#flora">Flora in bloom</a></li>
+    <li><a href="#birds">Birds in late May</a></li>
+    <li><a href="#history">History &amp; culture</a></li>
+    <li><a href="#daytrips">Day trips</a></li>
+    <li><a href="#restaurants">Restaurants</a></li>
+    <li><a href="#logistics">Logistics</a></li>
+  </ol>
+</nav>
+
+<!-- ================== WEATHER ================== -->
+<section id="weather">
+<h2>Expected weather</h2>
+<table>
+  <tr><th>Location</th><th>Day high</th><th>Night low</th><th>Notes</th></tr>
+  <tr>
+    <td>Sokobanja town (400 m)</td>
+    <td>20 °C avg (range 18–25)</td>
+    <td>9 °C</td>
+    <td>~36 % chance of rain per day, ~10 mm wet-day average</td>
+  </tr>
+  <tr>
+    <td>Rtanj summit (1,565 m)</td>
+    <td>5–10 °C</td>
+    <td>often sub-zero with wind chill</td>
+    <td>10–11 °C colder than town + wind exposure on the open ridge</td>
+  </tr>
+  <tr>
+    <td>Lake Bovan (water)</td>
+    <td colspan="2">16–18 °C</td>
+    <td>swimmable for the hardy</td>
+  </tr>
+</table>
+<p><strong>Pack:</strong> rain shell (mandatory), warm fleece + wind shell for Rtanj, layered clothing for the basin.</p>
+<p><strong>Daylight:</strong> sunrise ~05:25, sunset ~20:00 local (CEST, UTC+2). ~14.5 h of daylight.</p>
+</section>
+
+<!-- ================== CYCLING ================== -->
+<section id="cycling">
+<h2>Cycling routes</h2>
+<p class="lede">Four routes. The Giro del Rtanj is the headline; Bovan is the rest-the-legs day; Ozren circular keeps you in deep forest; the basin circle is a 15-km bailout.</p>
+
+<!-- Route A -->
+<article class="card bike">
+  <h3>A · Giro del Rtanj <span class="badge bike">bike</span></h3>
+  <div class="meta">
+    <span><strong>33.5 km</strong> loop</span>
+    <span><strong>+600–800 m</strong></span>
+    <span>~60 % gravel · ~40 % asphalt</span>
+    <span>traffic: very low</span>
+  </div>
+  <div class="map" id="map-bike-rtanj" data-gpx="gpx/giro-del-rtanj.gpx"></div>
+  <p><strong>Direction:</strong> Sokobanja → Vrmdža → Jošanica → Pakleš → Vasiljevac → Glavica → Sokobanja.</p>
+  <p><strong>Along the way:</strong></p>
+  <ul>
+    <li><strong>Vrmdžanska Kula fortress</strong> — Roman-era walls under Justinian I, destroyed 1413.</li>
+    <li><strong>Jošanica Church</strong> (~11C) — described as "the oldest existing church in eastern Serbia."</li>
+    <li><strong>19C operating watermill at Jošanica.</strong></li>
+    <li><strong>Rtanj pyramid</strong> as constant backdrop — the 1,565 m near-perfect natural pyramid.</li>
+  </ul>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Paeonia peregrina (peak)</span>
+    <span class="tag">Orchis spp.</span>
+    <span class="tag">Anacamptis laxiflora</span>
+    <span class="tag">Salvia pratensis</span>
+    <span class="tag">limestone meadow community</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Hoopoe</span>
+    <span class="tag">European Bee-eater (colonies on Moravica banks)</span>
+    <span class="tag">Red-backed Shrike</span>
+    <span class="tag">Cuckoo (peak)</span>
+    <span class="tag">Common Buzzard</span>
+  </div>
+  <p style="font-size:0.85rem;color:var(--fg-mute);margin-top:8px;">GPX source: <a href="https://bikeadventurebelgrade.com/our-destination/rtanj-and-sokobanja/">Bike Adventure Belgrade</a> · <a href="https://bkgorski.wordpress.com/mtb-staze/">BK Gorski</a>. Local file is a corridor approximation.</p>
+</article>
+
+<!-- Route B -->
+<article class="card bike">
+  <h3>B · Giro del Bovan <span class="badge bike">bike</span></h3>
+  <div class="meta">
+    <span><strong>42.3 km</strong> loop</span>
+    <span><strong>+300–400 m</strong></span>
+    <span>~80 % paved · ~20 % macadam</span>
+    <span>traffic: light</span>
+  </div>
+  <div class="map" id="map-bike-bovan" data-gpx="gpx/giro-del-bovan.gpx"></div>
+  <p><strong>Direction:</strong> Sokobanja → SW down Moravica → Trubarevac → Bovan dam crossing → N shore via Aleksinac-side connectors → back.</p>
+  <p><strong>Along the way:</strong></p>
+  <ul>
+    <li><strong>Bovan reservoir</strong> — 1977 artificial lake, 8 km long, max depth ~50 m, motorboats prohibited.</li>
+    <li><strong>Hacijenda Gane</strong> at Trubarevac — lakeside lunch stop.</li>
+    <li><strong>Dam structure</strong> — concrete arch dam, infrastructure-tourism viewpoint.</li>
+  </ul>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Aquilegia vulgaris (riverside)</span>
+    <span class="tag">Iris pseudacorus (reedbeds starting)</span>
+    <span class="tag">Salvia pratensis</span>
+    <span class="tag">Centaurea spp.</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Great Crested Grebe</span>
+    <span class="tag">Black-necked Grebe</span>
+    <span class="tag">Little Grebe</span>
+    <span class="tag">Common Tern</span>
+    <span class="tag">Grey + Little + Great + Squacco Heron</span>
+    <span class="tag">Marsh Harrier</span>
+    <span class="tag">Great Reed / Reed / Sedge Warbler</span>
+    <span class="tag">Hobby (dusk)</span>
+  </div>
+  <p style="font-size:0.85rem;color:var(--fg-mute);margin-top:8px;">GPX source: <a href="https://bikeadventurebelgrade.com/our-destination/rtanj-and-sokobanja/">Bike Adventure Belgrade</a> · <a href="https://bkgorski.wordpress.com/mtb-staze/">BK Gorski</a>.</p>
+</article>
+
+<!-- Route C -->
+<article class="card bike">
+  <h3>C · Ozren circular <span class="badge bike">bike</span></h3>
+  <div class="meta">
+    <span><strong>15 km</strong> loop</span>
+    <span><strong>+400 m</strong></span>
+    <span>~70 % unpaved forest · ~30 % asphalt</span>
+    <span>traffic: very low</span>
+  </div>
+  <div class="map" id="map-bike-ozren" data-gpx="gpx/ozren-circular.gpx"></div>
+  <p><strong>Direction:</strong> Kalinovica → Kosavsko → Peacock's Mud → Resnik's Meadows → St Archangel hermitage → Jovan's Rock → Ozren Hospital → Kalinovica.</p>
+  <p><strong>Along the way:</strong></p>
+  <ul>
+    <li><strong>St Archangel hermitage</strong> — small forest chapel.</li>
+    <li><strong>Jovan's Rock</strong> — viewpoint.</li>
+    <li><strong>Resnik's Meadows</strong> — forest clearing.</li>
+    <li>Mature Ozren beech-and-pine forest, ~680 m upland.</li>
+  </ul>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Cephalanthera longifolia</span>
+    <span class="tag">Orchis pallens (yellow)</span>
+    <span class="tag">Vaccinium myrtillus (flowering)</span>
+    <span class="tag">Genista spp.</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Black + Great Spotted + Middle Spotted + Green + Grey-headed + Lesser Spotted Woodpecker</span>
+    <span class="tag">Sombre Tit (Balkan)</span>
+    <span class="tag">Wood Warbler (peak song)</span>
+    <span class="tag">Red-breasted Flycatcher (Balkan)</span>
+    <span class="tag">Eurasian Nuthatch</span>
+    <span class="tag">Short-toed Treecreeper</span>
+  </div>
+  <p style="font-size:0.85rem;color:var(--fg-mute);margin-top:8px;">GPX source: <a href="https://sokobanja.rs/en/sokobanja-activities/mountain-biking/">Sokobanja Tourism MTB</a>.</p>
+</article>
+
+<!-- Route D -->
+<article class="card bike">
+  <h3>D · Sokobanja basin recreational circle <span class="badge bike">bike</span></h3>
+  <div class="meta">
+    <span><strong>15 km</strong> loop</span>
+    <span><strong>+150–200 m</strong></span>
+    <span>~50/50 quiet asphalt + farm track</span>
+    <span>traffic: low outside town</span>
+  </div>
+  <div class="map" id="map-bike-basin" data-gpx="gpx/sokobanja-basin-circle.gpx"></div>
+  <p><strong>Direction:</strong> Sokobanja → Resnik → Poruznica → back. Good warm-up ride or weather-bailout day.</p>
+  <p><strong>Along the way:</strong> basin-floor agricultural country, edge of Ozren, Moravica river crossings.</p>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Paeonia peregrina</span>
+    <span class="tag">Leucanthemum vulgare (peak)</span>
+    <span class="tag">Centaurea spp.</span>
+    <span class="tag">Salvia pratensis</span>
+    <span class="tag">Lychnis flos-cuculi</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Hoopoe</span>
+    <span class="tag">Red-backed Shrike</span>
+    <span class="tag">Yellowhammer</span>
+    <span class="tag">Cuckoo</span>
+    <span class="tag">Common Buzzard</span>
+    <span class="tag">Turtle-dove</span>
+  </div>
+</article>
+
+</section>
+
+<!-- ================== HIKING ================== -->
+<section id="hiking">
+<h2>Hiking routes</h2>
+<p class="lede">Five hikes spanning easy town-walks to Rtanj's hard summit cone. The sub-summit Rtanj variant gives the same 360° panorama without the scramble.</p>
+
+<!-- Hike 1 -->
+<article class="card hike">
+  <h3>1 · Lepterija → Soko Grad → Golemi Kamen <span class="badge hike">hike</span> <span class="badge moderate">moderate</span></h3>
+  <div class="meta">
+    <span><strong>4.9 km</strong> out-and-back-ish</span>
+    <span><strong>+398 m</strong></span>
+    <span>~2h 30m</span>
+    <span>trailhead: Lepterija (walkable from town)</span>
+  </div>
+  <div class="map" id="map-hike-lepterija" data-gpx="gpx/hike-lepterija-sokograd.gpx"></div>
+  <p><strong>Along the way:</strong></p>
+  <ul>
+    <li><strong>Lepterija</strong> — wooden walkways above the Moravica canyon.</li>
+    <li><strong>"Virgin Mary in the Rock" (Bogorodica u steni)</strong> — natural rock formation on the right-bank cliff.</li>
+    <li><strong>Church of St Mary</strong> at Lepterija.</li>
+    <li><strong>Soko Grad fortress</strong> — three phases: 6C Byzantine (Justinian I), 1172 Serbian medieval (Stefan Nemanja), destroyed 1413.</li>
+    <li><strong>Golemi Kamen + Šiljati Kamen viewpoints</strong> — limestone outcrops over the canyon.</li>
+  </ul>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Paeonia peregrina</span>
+    <span class="tag">Orchis spp.</span>
+    <span class="tag">Iris reichenbachii</span>
+    <span class="tag">Anacamptis pyramidalis (late spikes)</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Grey Wagtail</span>
+    <span class="tag">Dipper</span>
+    <span class="tag">Black Redstart (fortress walls)</span>
+    <span class="tag">Crag Martin</span>
+    <span class="tag">Peregrine (occasional)</span>
+  </div>
+  <p style="font-size:0.85rem;color:var(--fg-mute);margin-top:8px;">GPX source: <a href="https://pss.rs/terenipp/lepterija-sokograd-golemi-kamen/">Planinarski Savez Srbije</a>.</p>
+</article>
+
+<!-- Hike 2 -->
+<article class="card hike">
+  <h3>2 · Vidikovci viewpoint circuit <span class="badge hike">hike</span> <span class="badge easy">easy-moderate</span></h3>
+  <div class="meta">
+    <span><strong>7.8 km</strong> loop</span>
+    <span><strong>~420 m</strong> max alt</span>
+    <span>~4 h</span>
+    <span>trailhead: Sokobanja central square (no car)</span>
+  </div>
+  <div class="map" id="map-hike-vidikovci" data-gpx="gpx/hike-vidikovci.gpx"></div>
+  <p><strong>Along the way:</strong> Borići, Janior viewpoint, Barudžija spring, Golemi Kamen, Lepterija, Mala Popovica, Banjica — a "best-of" basin overlook circuit.</p>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Paeonia peregrina</span>
+    <span class="tag">Salvia pratensis</span>
+    <span class="tag">Leucanthemum vulgare</span>
+    <span class="tag">Lychnis flos-cuculi</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Hoopoe</span>
+    <span class="tag">Red-backed Shrike</span>
+    <span class="tag">Cuckoo</span>
+    <span class="tag">Common Swift (town colonies)</span>
+  </div>
+  <p style="font-size:0.85rem;color:var(--fg-mute);margin-top:8px;">GPX source: <a href="https://www.sokobanja.org.rs/rekreacija.html">Sokobanja recreational map</a>.</p>
+</article>
+
+<!-- Hike 3 -->
+<article class="card hike">
+  <h3>3 · Ripaljka waterfall trail <span class="badge hike">hike</span> <span class="badge easy">easy</span></h3>
+  <div class="meta">
+    <span><strong>~2–3 km</strong></span>
+    <span>1–1.5 h round trip</span>
+    <span>trailhead: Ozren road near Grudno (car or bike)</span>
+  </div>
+  <div class="map" id="map-hike-ripaljka" data-gpx="gpx/hike-ripaljka.gpx"></div>
+  <p><strong>Along the way:</strong></p>
+  <ul>
+    <li><strong>Ripaljka waterfall</strong> — Serbia's first protected natural monument (1949). 11-tier cascade, ~40 m total, highest tier 11 m. <strong>Peak flow in late May.</strong></li>
+    <li><strong>Mala Ripaljka</strong> — smaller secondary cascade.</li>
+    <li>Ozren forest setting.</li>
+  </ul>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Petasites (butterbur)</span>
+    <span class="tag">Cardamine amara</span>
+    <span class="tag">Aquilegia vulgaris</span>
+    <span class="tag">Geum urbanum</span>
+    <span class="tag">ferns + mosses</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Grey Wagtail</span>
+    <span class="tag">Eurasian Wren</span>
+    <span class="tag">Dipper</span>
+    <span class="tag">Woodpeckers in surrounding forest</span>
+  </div>
+</article>
+
+<!-- Hike 4 -->
+<article class="card hike">
+  <h3>4 · Rtanj Šiljak summit <span class="badge hike">hike</span> <span class="badge hard">hard</span></h3>
+  <div class="meta">
+    <span><strong>13.4 km</strong> round trip</span>
+    <span><strong>+950 m</strong> (610 m → 1,565 m)</span>
+    <span>5h 45m – 6h 30m</span>
+    <span>trailhead: Rtanj village (~30 min drive)</span>
+  </div>
+  <div class="map" id="map-hike-rtanj" data-gpx="gpx/hike-rtanj-summit.gpx"></div>
+  <p>Forest dirt → rocky "goat trail" → airy ridge walk with low scrambling, open ledges, sudden drop-offs → <strong>final summit cone is a short steep scramble to the 1932 St George chapel.</strong></p>
+  <div class="callout">
+    <h3>Sub-summit variant — no scrambling, no exposure</h3>
+    <p>Turn around at the base of the summit cone (~1,400–1,500 m) for the same 360° panorama. Becomes ~4–5 h round-trip, moderate difficulty. Pick at the trailhead based on the day's weather and how the ridge feels.</p>
+  </div>
+  <p><strong>Along the way:</strong></p>
+  <ul>
+    <li>Pyramidal Rtanj profile — among Serbia's most iconic mountain forms.</li>
+    <li>Limestone meadows.</li>
+    <li><strong>1932 St George summit chapel</strong> at the top (Šiljak).</li>
+    <li>Clear-weather views: Stara Planina, Kučaj massif, Ozren, Devica.</li>
+  </ul>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Iris reichenbachii (karst meadows)</span>
+    <span class="tag">orchid groups (mid-slope)</span>
+    <span class="tag">Gentiana verna (ridge starting)</span>
+    <span class="tag">Saxifraga on rock</span>
+    <span class="tag">Anemone narcissiflora</span>
+  </div>
+  <p style="font-size:0.9rem;color:var(--fg-soft);">Rtanj has <strong>644 documented vascular plant species, 25 endemic</strong>. The Rtanj-strict endemic <em>Nepeta rtanjensis</em> sits at 650–850 m on calcareous outcrops but <strong>flowers June–July only</strong> — visible as rosettes, not in flower 22–25 May.</p>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Peregrine Falcon</span>
+    <span class="tag">Crag Martin</span>
+    <span class="tag">Alpine Swift</span>
+    <span class="tag">Red-rumped Swallow</span>
+    <span class="tag">Black Redstart</span>
+    <span class="tag">Short-toed Eagle (peak thermalling)</span>
+    <span class="tag">Booted Eagle</span>
+    <span class="tag">Long-legged Buzzard</span>
+    <span class="tag">Levant Sparrowhawk</span>
+    <span class="tag">Egyptian Vulture (rare)</span>
+    <span class="tag">Rock Thrush</span>
+    <span class="tag">Black-eared + Northern Wheatear</span>
+    <span class="tag">Tawny Pipit</span>
+    <span class="tag">Woodlark</span>
+  </div>
+  <div class="callout warn">
+    <p><strong>Carry 2 L water per person</strong> — no springs on the standard route. Warm + wind layer mandatory above 1,200 m.</p>
+  </div>
+  <p style="font-size:0.85rem;color:var(--fg-mute);margin-top:8px;">GPX source: <a href="https://www.komoot.com/highlight/2331811">Komoot Šiljak</a> · <a href="https://www.takeyourbackpack.com/backpacking-in-serbia/hike-rtanj-mountain/">Take Your Backpack trip report</a>.</p>
+</article>
+
+<!-- Hike 5 -->
+<article class="card hike">
+  <h3>5 · Ozren–Leskovik 1,174 m <span class="badge hike">hike</span> <span class="badge moderate">moderate</span></h3>
+  <div class="meta">
+    <span><strong>~8 km</strong> round trip</span>
+    <span><strong>+560 m</strong></span>
+    <span>~4 h</span>
+    <span>trailhead: Monastery of St Stephen, Lipovac (~25 min drive S)</span>
+  </div>
+  <div class="map" id="map-hike-leskovik" data-gpx="gpx/hike-ozren-leskovik.gpx"></div>
+  <p>Well-marked every ~20 m, mostly forested all the way to Ozren's true summit.</p>
+  <p><strong>Along the way:</strong> Monastery of St Stephen (Lipovac) at the start; Ozren forest highest point.</p>
+  <p><strong>Flora:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Cephalanthera longifolia</span>
+    <span class="tag">Orchis pallens</span>
+    <span class="tag">Vaccinium myrtillus (flowering)</span>
+    <span class="tag">late primulas</span>
+  </div>
+  <p><strong>Fauna:</strong></p>
+  <div class="tag-list">
+    <span class="tag">Black + Great Spotted + Middle Spotted + Green Woodpecker</span>
+    <span class="tag">Sombre Tit</span>
+    <span class="tag">Red-breasted Flycatcher</span>
+    <span class="tag">Wood Warbler (peak song)</span>
+    <span class="tag">Common Redstart</span>
+    <span class="tag">Eurasian Nuthatch</span>
+    <span class="tag">Goldcrest (conifer)</span>
+  </div>
+  <p style="font-size:0.85rem;color:var(--fg-mute);margin-top:8px;">GPX source: <a href="https://planine.net/serbia/east-serbia/ozren-leskovik-1174-m/">Planine.net</a>.</p>
+</article>
+
+</section>
+
+<!-- ================== FLORA ================== -->
+<section id="flora">
+<h2>Flora in bloom in late May 2026</h2>
+<p class="lede">Only species actually flowering 22–25 May. Headline endemics that flower June–September (<em>Nepeta rtanjensis</em>, <em>Satureja kitaibelii</em>, <em>Calluna vulgaris</em>) are deliberately skipped.</p>
+
+<h3>The trophies</h3>
+<ul>
+  <li><strong>Paeonia peregrina</strong> <span class="tag">peak</span> — Kosovo peony, glossy red 10–13 cm flowers, at peak bloom in basin-edge meadows. Best on the Vidikovci circuit, Lepterija meadows, and the Sokobanja recreational circle.</li>
+  <li><strong>Ramonda serbica</strong> <span class="tag endemic">paleoendemic · tail of bloom</span> — Phoenix of the Balkans, resurrection plant, mauve-purple flowers. 22–25 May catches the very tail of its window — last chance. Found on vertical limestone cliffs at <strong>Sićevo Gorge</strong> (~1 h south via Niš) — worth the day-trip for botanical interest.</li>
+</ul>
+
+<h3>Foothill &amp; karst meadows</h3>
+<ul>
+  <li><strong>Iris reichenbachii</strong> — small purple-blue Balkan dwarf iris on dry limestone karst; common on Rtanj approach and Ozren karst meadows.</li>
+  <li><strong>Dactylorhiza sambucina</strong> — elder-flowered orchid, yellow + purple morphs together in foothill grazed meadows.</li>
+  <li><strong>Orchis spp.</strong> — multiple terrestrial orchids in basin-edge and foothill meadows.</li>
+  <li><strong>Anacamptis pyramidalis</strong> — late spikes possible.</li>
+  <li><strong>Anacamptis laxiflora</strong> — starting its mass-bloom period in damp meadows.</li>
+  <li><strong>Syringa vulgaris</strong> — wild lilac finishing on Rtanj's north slope.</li>
+</ul>
+
+<h3>Basin-meadow community</h3>
+<ul>
+  <li><strong>Salvia pratensis</strong> — purple-blue, full bloom.</li>
+  <li><strong>Lotus corniculatus</strong>, <strong>Trifolium</strong>, <strong>Knautia arvensis</strong>, <strong>Linum</strong>, <strong>Centaurea spp.</strong> — limestone-meadow community in active bloom.</li>
+</ul>
+
+<h3>Riparian</h3>
+<ul>
+  <li><strong>Aquilegia vulgaris</strong> — Lepterija and Moravica banks.</li>
+  <li><strong>Geum urbanum</strong> — riverside.</li>
+  <li><strong>Iris pseudacorus</strong> — starting on Bovan reedbeds and wet ditches.</li>
+</ul>
+
+<h3>Rtanj summit ridge (1,400 m+)</h3>
+<ul>
+  <li><strong>Gentiana verna</strong> — spring gentian, intense blue, starting where snow has just melted.</li>
+  <li><strong>Anemone narcissiflora</strong> — starting on the summit area.</li>
+  <li><strong>Primula veris</strong> — late blooms in shaded crevices.</li>
+</ul>
+</section>
+
+<!-- ================== BIRDS ================== -->
+<section id="birds">
+<h2>Birds in late May</h2>
+<p class="lede">Past spring migration peak, deep into breeding season — dawn (05:00–08:00) and pre-sunset (18:30–20:30) drive most ID work.</p>
+
+<h3>Best birding sites (in priority order)</h3>
+<ol>
+  <li><strong>Bovan Lake</strong> — best eBird hotspot in the area with ~72 species reported. Dam and "Velika plaža" for waterfowl, reedbeds at the inflow for warblers, dawn for songbird density.</li>
+  <li><strong>Rtanj cliffs and ridge</strong> — cliff-nesting raptors, summit thermals.</li>
+  <li><strong>Ozren forest</strong> — one of Serbia's largest single-massif forests; full Balkan woodpecker suite and beech-specialty passerines.</li>
+  <li><strong>Moravica + Lepterija canyon</strong> — riparian and small-cliff birds.</li>
+  <li><strong>Sićevo Gorge</strong> (1 h south, day-trip) — vulture and raptor cliffs.</li>
+</ol>
+
+<h3>Headline species in late May</h3>
+<ul>
+  <li><strong>Cliff raptors:</strong> Peregrine Falcon, Short-toed Eagle (peak thermalling for snake hunting), Booted Eagle, Levant Sparrowhawk (back from African wintering), Long-legged Buzzard. Egyptian Vulture possible. Griffon Vulture as wide-ranging forager from Stara Planina.</li>
+  <li><strong>Forest woodpeckers (Ozren):</strong> Black, Great Spotted, Middle Spotted (beech/oak), Green, Grey-headed, Lesser Spotted.</li>
+  <li><strong>Forest songbirds (Ozren beech-pine):</strong> Sombre Tit (Balkan specialty), Red-breasted Flycatcher (Balkan beech specialty), Collared Flycatcher, Wood Warbler at peak song, Common Redstart, Garden Warbler, Hawfinch possible.</li>
+  <li><strong>Wetland (Bovan reedbeds):</strong> Great Reed Warbler, Reed Warbler, Sedge Warbler all in song. Marsh Harrier quartering. Squacco Heron, Night Heron in margins. Hobby hawking dragonflies at dusk.</li>
+  <li><strong>Bovan open water:</strong> Great Crested + Black-necked + Little Grebe, Common Tern, Mallard, Gadwall, Coot, Yellow-legged Gull.</li>
+  <li><strong>Cliffs and rocks (Rtanj, Lepterija):</strong> Crag Martin, Alpine Swift, Red-rumped Swallow, Black Redstart, Rock Thrush, Black-eared Wheatear.</li>
+  <li><strong>Basin and farmland:</strong> Hoopoe (vocal in early morning), <strong>European Bee-eater colonies excavating bank cuttings on the Moravica banks</strong> — late-May arrival peak. European Roller (less common), Red-backed + Lesser Grey Shrike, Corn Bunting, Quail (dawn/dusk), Turtle Dove, Cuckoo at peak calling.</li>
+  <li><strong>Riparian (Moravica, Ripaljka):</strong> White-throated Dipper, Kingfisher, Grey + White Wagtail, Common Sandpiper.</li>
+  <li><strong>Dusk owls:</strong> Eurasian Eagle Owl on the Soko Grad canyon, Tawny Owl in Ozren forest, Scops Owl in town gardens.</li>
+</ul>
+</section>
+
+<!-- ================== HISTORY ================== -->
+<section id="history">
+<h2>History &amp; culture</h2>
+
+<h3>Sokobanja town centre</h3>
+<ul>
+  <li><strong>Amam Turski</strong> — Ottoman hamam, in continuous use since the <strong>Roman period</strong>, remodelled by the Ottomans, documented by Evliya Çelebi in 1663, state-protected.</li>
+  <li><strong>Church of the Transfiguration of the Lord</strong> — 19C central parish church.</li>
+  <li><strong>Hajduk Veljko Memorial Fountain</strong> at Vrelo-Borici.</li>
+</ul>
+
+<h3>Within 5 km</h3>
+<ul>
+  <li><strong>Soko Grad fortress</strong> (2 km E, above the Moravica canyon) — three building phases: 6C Byzantine (Justinian I), 1172 Serbian medieval (Stefan Nemanja), destroyed by the Ottomans 1413. <strong>Monument of Culture of Great Importance (1982)</strong>.</li>
+  <li><strong>Lepterija</strong> picnic area — wooden walkways, "Virgin Mary in the Rock," small Church of St Mary, trail-linked to Soko Grad.</li>
+  <li><strong>Ripaljka waterfall</strong> — Serbia's first protected natural monument (1949).</li>
+</ul>
+
+<h3>Within 15 km</h3>
+<ul>
+  <li><strong>Jermenčić Monastery</strong> on Ozren — founded <strong>1392 by Armenian deserters from the Ottoman army after the Battle of Kosovo (1389)</strong>; dedicated to Archangels Gabriel and Michael; primary feast 26 July (not during the trip).</li>
+  <li><strong>Gradašnica watermills</strong> — 13 early-19C mills on the Gradašnica stream; one restored for tourism.</li>
+  <li><strong>Lake Bovan</strong> — 1977 artificial reservoir.</li>
+</ul>
+
+<h3>Within 30–60 min</h3>
+<ul>
+  <li><strong>Vrmdža (Vrmdžanska Kula) fortress</strong> — Roman-era under Justinian I, destroyed 1413, 12 km N.</li>
+  <li><strong>Jošanica Church</strong> — founded 11C, 15 km NW; "the oldest existing church in eastern Serbia."</li>
+  <li><strong>Sesalac Cave</strong> — 19 km E toward Knjaževac; 200 m lit visitor trail with stalactites/stalagmites/travertine tubs, small underground river. ~4 km gravel approach.</li>
+</ul>
+</section>
+
+<!-- ================== DAY TRIPS ================== -->
+<section id="daytrips">
+<h2>Day trips</h2>
+
+<div class="daytrip">
+  <h3>Felix Romuliana / Gamzigrad</h3>
+  <div class="meta">~1h 13m drive N · UNESCO World Heritage</div>
+  <p>Late-Roman fortified palace built by Emperor Galerius (late 3C – early 4C). Often called the most preserved imperial palace in Europe. Modern visitor centre on-site. Worth a half-day.</p>
+</div>
+
+<div class="daytrip">
+  <h3>Niš</h3>
+  <div class="meta">~55 min drive W</div>
+  <p><strong>Niš Fortress</strong> (Ottoman atop Roman/Byzantine/medieval layers), <strong>Skull Tower (Ćele Kula, 1809)</strong>, and <strong>Mediana</strong> — Constantine's 3C imperial residential palace complex, <strong>reopened to visitors in 2023</strong> after years closed.</p>
+  <div class="callout warn" style="margin-top:8px;">
+    <p><strong>Mediana entry is cash-only.</strong> Bring RSD or convert at the border / in Niš.</p>
+  </div>
+</div>
+
+<div class="daytrip">
+  <h3>Sićevo Gorge Nature Park</h3>
+  <div class="meta">~1 h drive S via Niš · botanical + birding</div>
+  <p>Combine with the <em>Ramonda serbica</em> bloom (tail-end this week — last chance) and karst-cliff raptor watching. <strong>Bogorodica Sićevačka monastery</strong> (1644) on the gorge rim. <strong>Sićevo Art Colony</strong> (founded 1905 by Nadežda Petrović) — oldest art colony in the Balkans.</p>
+</div>
+</section>
+
+<!-- ================== RESTAURANTS ================== -->
+<section id="restaurants">
+<h2>Restaurants</h2>
+
+<div class="callout warn">
+  <p><strong>Reservation rule:</strong> Sokobanja is a spa town with weekend surges. <strong>Reserve Saturday 23 May dinner everywhere except Caffe Amam.</strong> Mid-week walk-ins fine.</p>
+</div>
+
+<div class="resto">
+  <h3>Filotin Pogled</h3>
+  <div class="meta">Mountainside above town · car helpful · TripAdvisor 5.0/5 #1</div>
+  <p>Serbian roasts and traditional, valley views. Reservations recommended.</p>
+</div>
+
+<div class="resto">
+  <h3>Restoran Zvone i Šone</h3>
+  <div class="meta">Svetozara Markovića 10a · central · TripAdvisor 4.5/5 #2</div>
+  <p>European + grill, budget-friendly home-cooked. Phone +381 63 815 4233.</p>
+</div>
+
+<div class="resto">
+  <h3>Restoran Pećina</h3>
+  <div class="meta">Inside Lepterija park, ~2 km SE on the Moravica</div>
+  <p>Built into a rock overhang. River fish, grilled meats, whole-lamb roast. Go for the site as much as the food.</p>
+</div>
+
+<div class="resto">
+  <h3>Caffe Amam &amp; Kitchen</h3>
+  <div class="meta">Svetog Save street, opposite the Ottoman hamam · casual</div>
+  <p>Café-kitchen — espresso, pizza, pasta, grill.</p>
+</div>
+
+<div class="resto">
+  <h3>Hacijenda Gane</h3>
+  <div class="meta">Trubarevac, Bovan lake · 15–20 min by car</div>
+  <p>Lakeside, pair with a Bovan day. Phone +381 62 210 605.</p>
+</div>
+
+<div class="resto">
+  <h3>Restaurant Panorama (Hotel Zeleni Grad)</h3>
+  <div class="meta">18 Vojvode Mišića · central · higher-end</div>
+  <p>Reservations advisable for non-guests.</p>
+</div>
+
+<div class="resto">
+  <h3>Sokoterme restaurant</h3>
+  <div class="meta">Inside Hotel Sokoterme · central · functional spa-hotel</div>
+  <p>Phone +381 18 884856.</p>
+</div>
+
+</section>
+
+<!-- ================== LOGISTICS ================== -->
+<section id="logistics">
+<h2>Logistics</h2>
+
+<h3>Drive from Sofia</h3>
+<p>225 km / 2h 45m via E80 motorway through Kalotina border, A4 to Niš (1h 48m motorway), then R-247 east through Aleksinac and the Moravica valley (~55 min).</p>
+
+<div class="callout warn">
+  <h3>Border timing — Cyril &amp; Methodius long weekend (Sun 24 + Mon 25 May are BG holidays)</h3>
+  <p><strong>Friday 22 May outbound:</strong> Kalotina spikes in the afternoon. Leave Sofia <strong>before 11:00 or after 21:00</strong>.</p>
+  <p><strong>Monday 25 May return:</strong> Leave Sokobanja <strong>before 13:00 or after 19:00</strong>. The peak return wave hits Kalotina mid-late afternoon.</p>
+</div>
+
+<div class="callout">
+  <h3>Mountaineering event — Saturday 23 May</h3>
+  <p>Sokobanja's official calendar lists <strong>"Mountaineering Action Small Rtanj's Peaks"</strong> on May 23, organised by MA "Oštra Čuka". Rtanj-area trailheads (Rtanj village, Vrmdža) will be busier than usual that morning; parking tighter; you may meet groups of 30–100 mountaineers on standard routes.</p>
+  <p>Two options if you want to do Rtanj Šiljak:</p>
+  <ul>
+    <li>Start <strong>before 07:00</strong> to clear the climb ahead of the group.</li>
+    <li>Move Rtanj to Sunday or Monday; spend Saturday on non-Rtanj activities (Lepterija + Soko Grad + Bovan, or the Felix Romuliana day-trip).</li>
+  </ul>
+</div>
+
+<h3>Cash, water, coverage</h3>
+<ul>
+  <li><strong>Cash:</strong> Mediana entry in Niš is cash-only (RSD). Carry some euros and convert at the border or in Niš.</li>
+  <li><strong>Water:</strong> No springs on the Rtanj summit route — carry 2 L per person.</li>
+  <li><strong>Mobile coverage:</strong> good in town, intermittent on Rtanj ridge, none in Sesalac cave.</li>
+</ul>
+
+<h3>Tourism Office</h3>
+<p>For last-minute info — Mountaineering Action route, GPX, trail status:</p>
+<p><strong>+381 18 833 988</strong> · <a href="mailto:tic@tosokobanja.rs">tic@tosokobanja.rs</a> · Mon–Fri 07:00–15:00</p>
+</section>
+
+<footer class="foot">
+  <p>Trip notebook · Built locally · Maps via Leaflet + OpenStreetMap. GPX traces in <code>gpx/</code> are corridor approximations — pull the source GPX (linked per route) before riding or hiking.</p>
+</footer>
+
+</div>
+</body>
+</html>

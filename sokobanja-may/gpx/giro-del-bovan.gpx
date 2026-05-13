@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="sokobanja-may approximate trace" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata>
+    <name>Giro del Bovan</name>
+    <desc>42.3 km bike loop around Lake Bovan reservoir — Approximate waypoint trace. Pull source GPX before riding/hiking.</desc>
+  </metadata>
+  <trk>
+    <name>Giro del Bovan</name>
+    <trkseg>
+      <trkpt lat="43.646900" lon="21.871800"><ele>400.0</ele></trkpt>
+      <trkpt lat="43.640000" lon="21.860000"><ele>395.0</ele></trkpt>
+      <trkpt lat="43.632000" lon="21.849000"><ele>390.0</ele></trkpt>
+      <trkpt lat="43.625000" lon="21.838000"><ele>385.0</ele></trkpt>
+      <trkpt lat="43.618900" lon="21.829400"><ele>380.0</ele></trkpt>
+      <trkpt lat="43.610000" lon="21.816000"><ele>370.0</ele></trkpt>
+      <trkpt lat="43.602000" lon="21.800000"><ele>360.0</ele></trkpt>
+      <trkpt lat="43.593000" lon="21.782000"><ele>350.0</ele></trkpt>
+      <trkpt lat="43.586000" lon="21.770000"><ele>345.0</ele></trkpt>
+      <trkpt lat="43.580600" lon="21.761900"><ele>320.0</ele></trkpt>
+      <trkpt lat="43.578000" lon="21.756000"><ele>330.0</ele></trkpt>
+      <trkpt lat="43.583000" lon="21.748000"><ele>340.0</ele></trkpt>
+      <trkpt lat="43.591000" lon="21.740000"><ele>350.0</ele></trkpt>
+      <trkpt lat="43.600000" lon="21.740000"><ele>360.0</ele></trkpt>
+      <trkpt lat="43.610000" lon="21.748000"><ele>365.0</ele></trkpt>
+      <trkpt lat="43.620000" lon="21.760000"><ele>370.0</ele></trkpt>
+      <trkpt lat="43.628000" lon="21.774000"><ele>375.0</ele></trkpt>
+      <trkpt lat="43.634000" lon="21.791000"><ele>380.0</ele></trkpt>
+      <trkpt lat="43.639000" lon="21.808000"><ele>385.0</ele></trkpt>
+      <trkpt lat="43.643000" lon="21.826000"><ele>390.0</ele></trkpt>
+      <trkpt lat="43.645000" lon="21.845000"><ele>393.0</ele></trkpt>
+      <trkpt lat="43.646000" lon="21.860000"><ele>396.0</ele></trkpt>
+      <trkpt lat="43.646900" lon="21.871800"><ele>400.0</ele></trkpt>
+    </trkseg>
+  </trk>
+</gpx>
