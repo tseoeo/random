@@ -1,68 +1,76 @@
-// Sokobanja May 2026 — initialise Leaflet maps from data-gpx attributes.
-// Each .map element gets an OSM-tiled Leaflet map with its GPX track overlaid.
+// Initialise Leaflet + leaflet-gpx for every .route-map[data-gpx] on the page.
+// Each map gets OSM tiles, a fitted bounds from the GPX track, and a compact toolbar.
 
 (function () {
-  function initMap(el) {
-    var gpxUrl = el.getAttribute("data-gpx");
-    if (!gpxUrl) return;
+  if (typeof L === 'undefined') {
+    console.warn('Leaflet not loaded; maps will be blank.');
+    return;
+  }
 
-    // Default to a Sokobanja-area center; fitBounds will override on load.
-    var map = L.map(el, {
-      scrollWheelZoom: false, // tap/pinch on mobile; scroll on desktop only after click
-      tap: true
-    }).setView([43.65, 21.85], 12);
+  const TILE_URL  = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  const TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-    // Enable scroll zoom only after first user interaction (click/tap into map).
-    map.once("focus", function () { map.scrollWheelZoom.enable(); });
-    map.on("click", function () { map.scrollWheelZoom.enable(); });
+  // Initial fallback view if a GPX fails to load: rough centre of the Sokobanja basin.
+  const FALLBACK_CENTER = [43.65, 21.87];
+  const FALLBACK_ZOOM   = 12;
 
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  function initMap(container) {
+    const gpxFile = container.getAttribute('data-gpx');
+    if (!gpxFile) return;
+
+    const map = L.map(container, {
+      scrollWheelZoom: false,   // don't hijack page scroll on desktop
+      tap: true,
+      zoomControl: true,
+    }).setView(FALLBACK_CENTER, FALLBACK_ZOOM);
+
+    L.tileLayer(TILE_URL, {
+      attribution: TILE_ATTR,
       maxZoom: 18,
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    new L.GPX(gpxUrl, {
+    // Enable scroll-zoom on click (mobile-friendly; doesn't hijack on first contact).
+    map.on('click', function () { map.scrollWheelZoom.enable(); });
+    map.on('mouseout', function () { map.scrollWheelZoom.disable(); });
+
+    if (typeof L.GPX === 'undefined') {
+      console.warn('leaflet-gpx plugin not loaded; GPX track not rendered for', gpxFile);
+      return;
+    }
+
+    new L.GPX(gpxFile, {
       async: true,
       polyline_options: {
-        color: el.id && el.id.indexOf("bike") !== -1 ? "#b56b2e" : "#4d7c5a",
+        color: '#a0522d',     // terracotta — visible over OSM
         weight: 4,
-        opacity: 0.85,
-        lineCap: "round"
+        opacity: 0.9,
+        lineCap: 'round',
+        lineJoin: 'round',
       },
       marker_options: {
         startIconUrl: null,
         endIconUrl: null,
         shadowUrl: null,
-        wptIconUrls: { "": null }
-      }
+        wptIconUrls: { '': null },
+      },
     })
-      .on("loaded", function (e) {
-        try {
-          map.fitBounds(e.target.getBounds(), { padding: [16, 16] });
-        } catch (err) {
-          /* ignore — keep default view */
-        }
+      .on('loaded', function (e) {
+        try { map.fitBounds(e.target.getBounds(), { padding: [16, 16] }); }
+        catch (err) { /* keep fallback view */ }
       })
-      .on("error", function (e) {
-        console.error("GPX load error for", gpxUrl, e);
+      .on('error', function (e) {
+        console.warn('GPX load error for', gpxFile, e);
       })
       .addTo(map);
   }
 
-  function ready() {
-    if (typeof L === "undefined" || typeof L.GPX === "undefined") {
-      // Leaflet or leaflet-gpx not loaded yet — retry shortly.
-      setTimeout(ready, 100);
-      return;
-    }
-    var maps = document.querySelectorAll(".map[data-gpx]");
-    for (var i = 0; i < maps.length; i++) initMap(maps[i]);
+  function initAll() {
+    document.querySelectorAll('.route-map[data-gpx]').forEach(initMap);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", ready);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
   } else {
-    ready();
+    initAll();
   }
 })();

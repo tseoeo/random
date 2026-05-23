@@ -1,277 +1,172 @@
-/* Sokobanja May 2026 — clean, minimal, mobile-first, limestone-warm palette */
+/* Sokobanja May 2026 — trip notebook
+   Limestone-karst palette: warm off-white, gray-blue, muted terracotta accent.
+   Mobile-first. */
 
 :root {
-  --fg:        #1f2530;
-  --fg-soft:   #4a5263;
-  --fg-mute:   #6c7585;
-  --bg:        #fbfaf6;          /* warm off-white */
-  --bg-soft:   #f3f1ea;
-  --bg-card:   #ffffff;
-  --border:    #e3e0d7;
-  --border-strong: #cbc7ba;
-  --accent:    #3a4a5e;          /* limestone gray-blue */
-  --accent-soft: #e8edf3;
-  --bike:      #b56b2e;          /* warm bronze for cycling */
-  --bike-soft: #f6ebd9;
-  --hike:      #4d7c5a;          /* moss green for hiking */
-  --hike-soft: #e3ede3;
-
-  --warn-bg:   #fbf6e6;
-  --warn-bd:   #d6b768;
-  --warn-fg:   #5a4318;
-
-  --note-bg:   #f1f3f6;
-  --note-bd:   #b8c2cf;
-
-  --maxw: 760px;
-  --rad:  8px;
-  --shadow: 0 1px 2px rgba(0,0,0,.04);
+  --bg: #f7f4ee;          /* warm off-white */
+  --bg-card: #fbfaf6;
+  --ink: #20262d;         /* near-black */
+  --ink-soft: #4b5560;    /* secondary text */
+  --rule: #d9d3c5;        /* limestone */
+  --accent: #4a6477;      /* gray-blue */
+  --accent-soft: #e3eaf0;
+  --warm: #a0522d;        /* terracotta, used very sparingly */
+  --shadow: 0 1px 2px rgba(32,38,45,0.06), 0 4px 12px rgba(32,38,45,0.04);
+  --radius: 4px;
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-size: 16px;
   line-height: 1.55;
-  color: var(--fg);
-  background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
 }
 
-.wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 16px 16px 64px;
-}
+body { max-width: 780px; margin: 0 auto; padding: 0 16px 64px; }
 
-h1, h2, h3, h4 {
-  font-family: Georgia, "Iowan Old Style", Charter, "Times New Roman", serif;
+h1, h2, h3 {
+  font-family: Georgia, "Charter", "Times New Roman", serif;
+  color: var(--ink);
   font-weight: 600;
-  color: var(--fg);
-  line-height: 1.25;
+  letter-spacing: 0.01em;
 }
 
-h1 { font-size: 1.85rem; margin: 0.6em 0 0.2em; }
-h2 { font-size: 1.4rem; margin: 1.6em 0 0.4em; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
-h3 { font-size: 1.12rem; margin: 1.2em 0 0.3em; }
-h4 { font-size: 1rem; margin: 1em 0 0.2em; }
+h1 { font-size: 1.9rem; line-height: 1.15; margin: 0 0 6px; }
+h2 {
+  font-size: 1.35rem;
+  margin: 36px 0 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+h3 { font-size: 1.08rem; margin: 22px 0 6px; }
 
 p { margin: 0.5em 0; }
-
-a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
-a:hover { color: #1c2733; }
-
-strong { font-weight: 600; }
-
-ul { padding-left: 22px; margin: 0.5em 0; }
-li { margin: 0.15em 0; }
-
-code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.92em; background: var(--bg-soft); padding: 1px 4px; border-radius: 3px; }
+a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--warm); }
 
 /* Header */
-.site-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 8px 14px;
-  padding: 4px 0 12px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 8px;
+.page-header {
+  padding: 28px 0 12px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 4px;
 }
-.site-head .title {
-  font-family: Georgia, serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--fg);
-  text-decoration: none;
+.page-header .dates {
+  font-size: 1.05rem;
+  color: var(--accent);
+  margin: 4px 0 2px;
 }
-.site-head .dates {
-  font-size: 0.92rem;
-  color: var(--fg-mute);
+.page-header .meta { color: var(--ink-soft); font-size: 0.92rem; }
+
+/* Section heads */
+section { margin-top: 14px; }
+
+/* Lists */
+ul.bullets, ol.bullets {
+  padding-left: 1.1em;
+  margin: 6px 0 10px;
+}
+ul.bullets li, ol.bullets li { margin: 4px 0; }
+
+ul.restaurants {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+ul.restaurants li {
+  padding: 10px 12px;
+  margin: 8px 0;
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  font-size: 0.96rem;
 }
 
-.lede {
-  font-size: 1.02rem;
-  color: var(--fg-soft);
-  margin: 0.4em 0 1em;
+/* Hike cards */
+.hike, .daytrip {
+  background: var(--bg-card);
+  padding: 14px 14px 16px;
+  margin: 18px 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
+.hike h3, .daytrip h3 { margin-top: 0; }
+.hike.bonus { background: #fbf6ec; border-left: 3px solid var(--warm); }
 
-/* Stat row at top */
 .stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin: 16px 0 20px;
+  font-size: 0.92rem;
+  color: var(--accent);
+  margin: 2px 0 8px;
 }
-.stat {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--rad);
-  padding: 10px 8px;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-.stat .v { font-weight: 600; font-size: 1rem; color: var(--fg); }
-.stat .k { font-size: 0.8rem; color: var(--fg-mute); margin-top: 2px; }
+.stats em { color: var(--ink-soft); font-style: normal; font-weight: 500; }
 
-/* Cards */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-left: 4px solid var(--accent);
-  border-radius: var(--rad);
-  padding: 14px 16px;
-  margin: 14px 0;
-  box-shadow: var(--shadow);
-}
-.card.bike { border-left-color: var(--bike); }
-.card.hike { border-left-color: var(--hike); }
-
-.card h3 { margin-top: 0; }
-.card .meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  font-size: 0.88rem;
-  color: var(--fg-soft);
-  margin: 4px 0 8px;
-}
-.card .meta span { white-space: nowrap; }
-.badge {
+.tag {
   display: inline-block;
-  padding: 1px 8px;
-  border-radius: 10px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-family: system-ui, sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-left: 6px;
 }
-.badge.bike { background: var(--bike-soft); color: var(--bike); }
-.badge.hike { background: var(--hike-soft); color: var(--hike); }
-.badge.easy   { background: #e3ede3; color: #2f5237; }
-.badge.moderate { background: #f6ebd9; color: #8a5a1e; }
-.badge.hard   { background: #f6d9d9; color: #8a2e2e; }
+
+.practical {
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  font-size: 0.93rem;
+  margin: 10px 0 0;
+}
+
+.caveat {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  background: #f0ecdf;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+}
 
 /* Maps */
-.map {
+.route-map {
   width: 100%;
   height: 300px;
-  border: 1px solid var(--border);
-  border-radius: var(--rad);
+  border-radius: var(--radius);
   margin: 10px 0;
-  background: #eee;
-}
-@media (min-width: 720px) {
-  .map { height: 400px; }
-}
-
-/* Callouts */
-.callout {
-  background: var(--note-bg);
-  border-left: 4px solid var(--note-bd);
-  border-radius: var(--rad);
-  padding: 12px 14px;
-  margin: 14px 0;
-}
-.callout.warn {
-  background: var(--warn-bg);
-  border-left-color: var(--warn-bd);
-  color: var(--warn-fg);
-}
-.callout h3 { margin-top: 0; font-size: 1.02rem; }
-.callout p { margin: 4px 0; }
-.callout.warn a { color: #5a4318; }
-
-/* Lists of small items (flora/fauna) */
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 6px 0 4px;
-}
-.tag {
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2px 9px;
-  font-size: 0.82rem;
-  color: var(--fg-soft);
-}
-.tag.endemic { background: #f6ebd9; color: #5a4318; border-color: #d6b768; font-weight: 600; }
-
-/* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.94rem;
-  margin: 10px 0;
-}
-th, td {
-  text-align: left;
-  padding: 6px 8px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
-}
-th {
-  background: var(--bg-soft);
-  font-weight: 600;
-  color: var(--fg);
-}
-
-/* Day-trip cards */
-.daytrip {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--rad);
-  padding: 12px 14px;
-  margin: 10px 0;
+  background: #eaeae0;
   box-shadow: var(--shadow);
 }
-.daytrip h3 { margin: 0 0 4px; }
-.daytrip .meta { font-size: 0.85rem; color: var(--fg-mute); margin-bottom: 4px; }
-
-/* Restaurant list */
-.resto {
-  border-bottom: 1px dashed var(--border);
-  padding: 10px 0;
-}
-.resto:last-child { border-bottom: none; }
-.resto h3 { margin: 0 0 2px; font-size: 1rem; }
-.resto .meta { font-size: 0.85rem; color: var(--fg-mute); margin-bottom: 4px; }
 
 /* Footer */
-.foot {
-  margin-top: 32px;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-  font-size: 0.86rem;
-  color: var(--fg-mute);
+footer {
+  margin-top: 48px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-align: center;
 }
 
-/* Skip-nav table-of-contents */
-.toc {
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  border-radius: var(--rad);
-  padding: 10px 14px;
-  margin: 14px 0;
-  font-size: 0.92rem;
+/* Tablet+ */
+@media (min-width: 640px) {
+  body { padding: 0 24px 80px; }
+  h1 { font-size: 2.3rem; }
+  h2 { font-size: 1.55rem; }
+  h3 { font-size: 1.15rem; }
+  .route-map { height: 400px; }
 }
-.toc ol { padding-left: 22px; margin: 4px 0; }
-.toc a { text-decoration: none; }
-.toc a:hover { text-decoration: underline; }
-
-/* Section anchors */
-section { scroll-margin-top: 16px; }
 
 /* Print */
 @media print {
-  body { font-size: 11pt; }
-  .map { height: 220px; }
-  .callout, .card, .daytrip { break-inside: avoid; }
-  .toc { display: none; }
+  body { max-width: none; }
+  .route-map { display: none; }
+  a { color: inherit; text-decoration: none; }
 }
