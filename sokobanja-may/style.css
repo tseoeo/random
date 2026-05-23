@@ -190,6 +190,40 @@ table.forecast tbody tr:last-child td { border-bottom: 0; }
   box-shadow: var(--shadow);
 }
 
+.route-map.overview-map {
+  height: 420px;
+  border: 1px solid var(--rule);
+}
+
+/* Peony off-hike tag inside Leaflet tooltip / popup */
+.peony-offhike-tag {
+  color: #6a1b9a;
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+/* Overview map legend */
+.map-legend {
+  background: rgba(255,255,255,0.92);
+  padding: 6px 9px;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+}
+.map-legend .sw {
+  display: inline-block;
+  width: 12px; height: 12px;
+  vertical-align: middle;
+  margin-right: 2px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+.map-legend .sw.on  { background: #d62828; border-color: #9b1c1c; }
+.map-legend .sw.off { background: #9c27b0; border-color: #6a1b9a; border-style: dashed; }
+.map-legend .sw.th  { background: #fff;    border-color: #20262d; }
+
 /* Footer */
 footer {
   margin-top: 48px;
@@ -210,6 +244,10 @@ footer {
 }
 
 /* Print */
+@media (min-width: 640px) {
+  .route-map.overview-map { height: 520px; }
+}
+
 @media print {
   body { max-width: none; }
   .route-map { display: none; }
